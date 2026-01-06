@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subscriptions - M-pesewa</title>
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/dashboard.css">
+    <link rel="stylesheet" href="../assets/css/forms.css">
+    <link rel="stylesheet" href="../assets/css/tables.css">
+    <link rel="stylesheet" href="../assets/css/animations.css">
+    <link rel="manifest" href="../manifest.json">
+    <link rel="icon" href="../assets/images/logo.svg" type="image/svg+xml">
+    <meta name="theme-color" content="#0A65FC">
+</head>
+<body class="dashboard-page subscriptions-page">
+    <header class="main-header">
+        <div class="header-container">
+            <div class="logo-section">
+                <div class="logo-icon">₵</div>
+                <h1 class="logo-text">M-pesewa<span>.com</span></h1>
+            </div>
+            <nav class="main-nav">
+                <a href="../index.html" class="nav-link">Home</a>
+                <a href="../pages/countries/index.html" class="nav-link">Countries</a>
+                <a href="../pages/groups.html" class="nav-link">Groups</a>
+                <a href="../pages/lending.html" class="nav-link">Lend</a>
+                <a href="../pages/borrowing.html" class="nav-link">Borrow</a>
+                <a href="../pages/ledger.html" class="nav-link">Ledger</a>
+                <a href="../pages/subscriptions.html" class="nav-link active">Subscription</a>
+            </nav>
+            <div class="header-actions">
+                <div class="user-menu">
+                    <span class="user-avatar">L</span>
+                    <span class="user-name">Lender Account</span>
+                    <div class="dropdown-menu">
+                        <a href="../pages/dashboard/lender-dashboard.html">Dashboard</a>
+                        <a href="../pages/profile.html">Profile</a>
+                        <a href="../pages/settings.html">Settings</a>
+                        <a href="../index.html" class="logout">Logout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="dashboard-container">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h3>Subscription Management</h3>
+                <div class="subscription-status active">Active</div>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="#my-subscription" class="sidebar-link active">
+                    <span class="icon">📅</span>
+                    <span>My Subscription</span>
+                </a>
+                <a href="#choose-tier" class="sidebar-link">
+                    <span class="icon">💰</span>
+                    <span>Choose Tier</span>
+                </a>
+                <a href="#payment" class="sidebar-link">
+                    <span class="icon">💳</span>
+                    <span>Make Payment</span>
+                </a>
+                <a href="#payment-history" class="sidebar-link">
+                    <span class="icon">📊</span>
+                    <span>Payment History</span>
+                </a>
+                <a href="#tier-comparison" class="sidebar-link">
+                    <span class="icon">⚖️</span>
+                    <span>Compare Tiers</span>
+                </a>
+                <a href="#faq" class="sidebar-link">
+                    <span class="icon">❓</span>
+                    <span>FAQ</span>
+                </a>
+                <a href="#support" class="sidebar-link">
+                    <span class="icon">🛟</span>
+                    <span>Support</span>
+                </a>
+            </nav>
+            <div class="sidebar-footer">
+                <div class="expiry-warning">
+                    <div class="warning-icon">⏰</div>
+                    <div class="warning-content">
+                        <div class="warning-title">Expires in 15 days</div>
+                        <div class="warning-date">28th Feb 2024</div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <div class="dashboard-header">
+                <div class="header-left">
+                    <h2>Lender Subscription Plans</h2>
+                    <p>Choose your lending capacity. Subscription is the only platform revenue. Borrowers pay nothing.</p>
+                </div>
+                <div class="header-right">
+                    <div class="current-subscription">
+                        <div class="subscription-badge premium">Premium Tier</div>
+                        <div class="subscription-details">
+                            <div class="detail-item">
+                                <span>Weekly Limit:</span>
+                                <span>₵5,000</span>
+                            </div>
+                            <div class="detail-item">
+                                <span>Expires:</span>
+                                <span class="expiry-date">28th Feb 2024</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dashboard-sections">
+                <!-- My Subscription Section -->
+                <section id="my-subscription" class="dashboard-section active">
+                    <div class="section-header">
+                        <h3>My Current Subscription</h3>
+                        <div class="section-actions">
+                            <button class="btn btn-primary" onclick="upgradeTier()">Upgrade Tier</button>
+                            <button class="btn btn-outline" onclick="renewSubscription()">Renew Now</button>
+                        </div>
+                    </div>
+
+                    <div class="subscription-overview">
+                        <div class="overview-card">
+                            <div class="card-header">
+                                <h4>Premium Tier</h4>
+                                <div class="card-badge active">Active</div>
+                            </div>
+                            <div class="card-content">
+                                <div class="feature-list">
+                                    <div class="feature-item">
+                                        <div class="feature-icon">✅</div>
+                                        <div class="feature-text">Weekly Lending Limit: ₵5,000</div>
+                                    </div>
+                                    <div class="feature-item">
+                                        <div class="feature-icon">✅</div>
+                                        <div class="feature-text">No CRB Check Required</div>
+                                    </div>
+                                    <div class="feature-item">
+                                        <div class="feature-icon">✅</div>
+                                        <div class="feature-text">Enhanced Borrower Verification</div>
+                                    </div>
+                                    <div class="feature-item">
+                                        <div class="feature-icon">✅</div>
+                                        <div class="feature-text">Unlimited Ledgers</div>
+                                    </div>
+                                    <div class="feature-item">
+                                        <div class="feature-icon">✅</div>
+                                        <div class="feature-text">Priority Support</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="current-payment">
+                                    <div class="payment-info">
+                                        <div class="payment-row">
+                                            <span>Current Plan:</span>
+                                            <span>Monthly (₵250/month)</span>
+                                        </div>
+                                        <div class="payment-row">
+                                            <span>Last Payment:</span>
+                                            <span>28th Jan 2024</span>
+                                        </div>
+                                        <div class="payment-row">
+                                            <span>Next Payment:</span>
+                                            <span class="due-soon">28th Feb 2024</span>
+                                        </div>
+                                        <div class="payment-row total">
+                                            <span>Amount Due:</span>
+                                            <span class="amount">₵250</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="usage-stats">
+                            <div class="stat-card">
+                                <div class="stat-header">
+                                    <h5>Lending Usage</h5>
+                                    <div class="stat-period">This Month</div>
+                                </div>
+                                <div class="stat-content">
+                                    <div class="usage-bar">
+                                        <div class="usage-label">
+                                            <span>₵15,200 Used</span>
+                                            <span>₵20,000 Limit</span>
+                                        </div>
+                                        <div class="progress-bar">
+                                            <div class="progress-fill" style="width: 76%"></div>
+                                        </div>
+                                        <div class="usage-note">76% of monthly limit used</div>
+                                    </div>
+                                    
+                                    <div class="usage-breakdown">
+                                        <div class="breakdown-item">
+                                            <span class="category">Transport Loans:</span>
+                                            <span class="value">₵8,500 (56%)</span>
+                                        </div>
+                                        <div class="breakdown-item">
+                                            <span class="category">School Fees:</span>
+                                            <span class="value">₵4,200 (28%)</span>
+                                        </div>
+                                        <div class="breakdown-item">
+                                            <span class="category">Medicine:</span>
+                                            <span class="value">₵2,500 (16%)</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="stat-card">
+                                <div class="stat-header">
+                                    <h5>Subscription Timeline</h5>
+                                    <div class="stat-period">Next 30 Days</div>
+                                </div>
+                                <div class="stat-content">
+                                    <div class="timeline">
+                                        <div class="timeline-item past">
+                                            <div class="timeline-date">28th Jan</div>
+                                            <div class="timeline-event">Last Payment</div>
+                                            <div class="timeline-status">Paid</div>
+                                        </div>
+                                        <div class="timeline-item current">
+                                            <div class="timeline-date">Today</div>
+                                            <div class="timeline-event">Active Period</div>
+                                            <div class="timeline-status">15 days left</div>
+                                        </div>
+                                        <div class="timeline-item future">
+                                            <div class="timeline-date">28th Feb</div>
+                                            <div class="timeline-event">Renewal Due</div>
+                                            <div class="timeline-status">₵250</div>
+                                        </div>
+                                        <div class="timeline-item future">
+                                            <div class="timeline-date">1st Mar</div>
+                                            <div class="timeline-event">If Unpaid</div>
+                                            <div class="timeline-status warning">Access Blocked</div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="renewal-notice">
+                                        <div class="notice-icon">⚠️</div>
+                                        <div class="notice-content">
+                                            <p><strong>Important:</strong> If subscription is not renewed by 28th Feb, your lending access will be blocked until payment is made.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="action-panel">
+                        <h4>Quick Actions</h4>
+                        <div class="action-buttons">
+                            <button class="btn btn-primary" onclick="makePayment()">
+                                <span class="icon">💳</span>
+                                <span>Pay Now</span>
+                            </button>
+                            <button class="btn btn-outline" onclick="changePlan()">
+                                <span class="icon">🔄</span>
+                                <span>Change to Annual</span>
+                            </button>
+                            <button class="btn btn-outline" onclick="downloadInvoice()">
+                                <span class="icon">📥</span>
+                                <span>Download Invoice</span>
+                            </button>
+                            <button class="btn btn-outline" onclick="contactSupport()">
+                                <span class="icon">🛟</span>
+                                <span>Contact Support</span>
+                            </button>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Choose Tier Section -->
+                <section id="choose-tier" class="dashboard-section">
+                    <div class="section-header">
+                        <h3>Choose Your Subscription Tier</h3>
+                        <p>Select the tier that matches your lending capacity. All tiers include unlimited ledgers.</p>
+                    </div>
+
+                    <div class="tiers-container">
+                        <div class="tier-card basic">
+                            <div class="tier-header">
+                                <h4>Basic Tier</h4>
+                                <div class="tier-badge">Entry Level</div>
+                            </div>
+                            <div class="tier-price">
+                                <div class="price-display">
+                                    <span class="currency">₵</span>
+                                    <span class="amount">50</span>
+                                    <span class="period">/month</span>
+                                </div>
+                                <div class="price-options">
+                                    <div class="option">
+                                        <input type="radio" name="basic" id="basic-monthly" checked>
+                                        <label for="basic-monthly">₵50 monthly</label>
+                                    </div>
+                                    <div class="option">
+                                        <input type="radio" name="basic" id="basic-bi">
+                                        <label for="basic-bi">₵250 bi-annual</label>
+                                    </div>
+                                    <div class="option">
+                                        <input type="radio" name="basic" id="basic-annual">
+                                        <label for="basic-annual">₵500 annual</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tier-features">
+                                <div class="feature">
+                                    <div class="feature-icon">✅</div>
+                                    <div class="feature-text">Weekly Limit: ≤ ₵1,500</div>
+                                </div>
+                                <div class="feature">
+                                    <div class="feature-icon">✅</div>
+                                    <div class="feature-text">No CRB Check</div>
+                                </div>
+                                <div class="feature">
+                                    <div class="feature-icon">✅</div>
+                                    <div class="feature-text">Basic Verification</div>
+                                </div>
+                                <div class="feature">
+                                    <div class="feature-icon">✅</div>
+                                    <div class="feature-text">Unlimited Ledgers</div>
+                                </div>
+                                <div class="feature">
+                                    <div class="feature-icon">✅</div>
+                                    <div class="feature-text">Email Support</div>
+                                </div>
+                            </div>
+                            <div class="tier-limitations">
+                                <div class="limitation">
+                                    <div class="limitation-icon">⛔</div>
+                                    <div class="limitation-text">Max loan: ₵1,500</div>
+                                </div>
+                                <div class="limitation">
+                                    <div class="limitation-icon">⛔</div>
+                                    <div class="limitation-text">No CRB access</div>
+                                </div>
+                            </div>
+                            <button class="btn btn-outline" onclick="selectTier('basic')">Select Basic</button>
+                        </div>
+
+                        <div class="tier-card premium featured">
+                            <div class="tier-badge-featured">Most Popular</div>
+                            <div class="tier-header">
+                                <h4>Premium Tier</h4>
+                                <div class="tier-badge">Recommended</div>
+                            </div>
+                            <div class="tier-price">
+                                <div class="price-display">
+                                    <span class="currency">₵</span>
+                                    <span class="amount">250</span>
+                                    <span class="period">/month</span>
+                                </div>
+                                <div class="price-options">
+                                    <div class="option">
+                                        <input type="radio" name="premium" id="premium-monthly" checked>
+                                        <label for="premium-monthly">₵250 monthly</label>
+                                    </div>
+                                    <div class="option">
+                                        <input type="radio" name="premium" id="premium-bi">
+                                        <label for="premium-bi">₵1,500 bi-annual</label>
+                                    </div>
+                                    <div class="option">
+                                        <input type="radio" name="premium" id="premium-annual">
+                                        <label for="premium-annual">₵2,500 annual</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tier-features">
+                                <div class="feature">
+                                    <div class="feature-icon">✅</div>
+                                    <div class="feature-text">Weekly Limit: ≤ ₵5,000</div>
+                                </div>
+                                <div class="feature">
+                                    <div class="feature-icon">✅</div>
+                                    <div class="feature-text">No CRB Check</div>
+                                </div>
+                                <div class="feature">
+                                    <div class="feature-icon">✅</div>
+                                    <div class="feature-text">Enhanced Verification</div>
+                                </div>
+                                <div class="feature">
+                                    <div class="feature-icon">✅</div>
+                                    <div class="feature-text">Unlimited Ledgers</div>
+                                </div>
+                                <div class="feature">
+                                    <div class="feature-icon">✅</div>
+                                    <div class="feature-text">Priority Support</div>
+                                </div>
+                                <div class="feature">
+                                    <div class="feature-icon">✅</div>
+                                    <div class="feature-text">Analytics Dashboard</div>
+                                </div>
+                            </div>
+                            <div class="tier-limitations">
+                                <div class="limitation">
+                                    <div class="limitation-icon">⛔</div>
+                                    <div class="limitation-text">Max loan: ₵5,000</div>
+                                </div>
+                            </div>
+                            <button class="btn btn-primary" onclick="selectTier('premium')">Select Premium</button>
+                        </div>
+
+                        <div class="tier-card super">
+                            <div class="tier-header">
+                                <h4>Super Tier</h4>
+                                <div class="tier-badge">Advanced</div>
+                            </div>
+                            <div class="tier-price">
+                                <div class="price-display">
+                                    <span class="currency">₵</span>
+                                    <span class="amount">1,000</span>
+                                    <span class="period">/month</span>
+                                </div>
+                                <div class="price-options">
+                                    <div class="option">
+                                        <input type="radio" name="super" id="super-monthly" checked>
+                                        <label for="super-monthly">₵1,000 monthly</label>
+                                    </div>
+                                    <div class="option">
+                                        <input type="radio" name="super" id="super-bi">
+                                        <label for="super-bi">₵5,000 bi-annual</label>
+                                    </div>
+                                    <div class="option">
+                                        <input type="radio" name="super" id="super-annual">
+                                        <label for="super-annual">₵8,500 annual</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tier-features">
+                                <div class="feature">
+                                    <div class="feature-icon">✅</div>
+                                    <div class="feature-text">Weekly Limit: ≤ ₵20,000</div>
+                                </div>
+                                <div class="feature">
+                                    <div class="feature-icon">✅</div>
+                                    <div class="feature-text">CRB Check Included</div>
+                                </div>
+                                <div class="feature">
+                                    <div class="feature-icon">✅</div>
+                                    <div class="feature-text">Full Verification</div>
+                                </div>
+                                <div class="feature">
+                                    <div class="feature-icon">✅</div>
+                                    <div class="feature-text">Unlimited Ledgers</div>
+                                </div>
+                                <div class="feature">
+                                    <div class="feature-icon">✅</div>
+                                    <div class="feature-text">24/7 Support</div>
+                                </div>
+                                <div class="feature">
+                                    <div class="feature-icon">✅</div>
+                                    <div class="feature-text">Advanced Analytics</div>
+                                </div>
+                                <div class="feature">
+                                    <div class="feature-icon">✅</div>
+                                    <div class="feature-text">Dedicated Account Manager</div>
+                                </div>
+                            </div>
+                            <div class="tier-limitations">
+                                <div class="limitation">
+                                    <div class="limitation-icon">⛔</div>
+                                    <div class="limitation-text">CRB required</div>
+                                </div>
+                            </div>
+                            <button class="btn btn-outline" onclick="selectTier('super')">Select Super</button>
+                        </div>
+
+                        <div class="tier-card lender-of-lenders">
+                            <div class="tier-header">
+                                <h4>Lender of Lenders</h4>
+                                <div class="tier-badge">Elite</div>
+                            </div>
+                            <div class="tier-price">
+                                <div class="price-display">
+                                    <span class="currency">₵</span>
+                                    <span class="amount">500</span>
+                                    <span class="period">/month</span>
+                                </div>
+                                <div class="price-options">
+                                    <div class="option">
+                                        <input type="radio" name="lol" id="lol-monthly" checked>
+                                        <label for="lol-monthly">₵500 monthly</label>
+                                    </div>
+                                    <div class="option">
+                                        <input type="radio" name="lol" id="lol-bi">
+                                        <label for="lol-bi">₵3,500 bi-annual</label>
+                                    </div>
+                                    <div class="option">
+                                        <input type="radio" name="lol" id="lol-annual">
+                                        <label for="lol-annual">₵6,500 annual</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tier-features">
+                                <div class="feature">
+                                    <div class="feature-icon">✅</div>
+                                    <div class="feature-text">Monthly Limit: ≤ ₵50,000</div>
+                                </div>
+                                <div class="feature">
+                                    <div class="feature-icon">✅</div>
+                                    <div class="feature-text">CRB Check Included</div>
+                                </div>
+                                <div class="feature">
+                                    <div class="feature-icon">✅</div>
+                                    <div class="feature-text">Lend to Other Lenders</div>
+                                </div>
+                                <div class="feature">
+                                    <div class="feature-icon">✅</div>
+                                    <div class="feature-text">Set Your Own Interest</div>
+                                </div>
+                                <div class="feature">
+                                    <div class="feature-icon">✅</div>
+                                    <div class="feature-text">Minimum 1 Month Repayment</div>
+                                </div>
+                                <div class="feature">
+                                    <div class="feature-icon">✅</div>
+                                    <div class="feature-text">Create Lender Groups</div>
+                                </div>
+                                <div class="feature">
+                                    <div class="feature-icon">✅</div>
+                                    <div class="feature-text">VIP Support</div>
+                                </div>
+                            </div>
+                            <div class="tier-requirements">
+                                <div class="requirement">
+                                    <div class="requirement-icon">📋</div>
+                                    <div class="requirement-text">Special agreement required</div>
+                                </div>
+                                <div class="requirement">
+                                    <div class="requirement-icon">👥</div>
+                                    <div class="requirement-text">Forms lender groups (2-1000 members)</div>
+                                </div>
+                            </div>
+                            <button class="btn btn-outline" onclick="selectTier('lol')">Select Elite</button>
+                        </div>
+                    </div>
+
+                    <div class="tier-comparison-table">
+                        <h4>Detailed Comparison</h4>
+                        <table class="comparison-table">
+                            <thead>
+                                <tr>
+                                    <th>Feature</th>
+                                    <th>Basic</th>
+                                    <th>Premium</th>
+                                    <th>Super</th>
+                                    <th>Lender of Lenders</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Weekly Lending Limit</td>
+                                    <td>≤ ₵1,500</td>
+                                    <td>≤ ₵5,000</td>
+                                    <td>≤ ₵20,000</td>
+                                    <td>≤ ₵50,000/month</td>
+                                </tr>
+                                <tr>
+                                    <td>Monthly Cost</td>
+                                    <td>₵50</td>
+                                    <td>₵250</td>
+                                    <td>₵1,000</td>
+                                    <td>₵500</td>
+                                </tr>
+                                <tr>
+                                    <td>Annual Cost</td>
+                                    <td>₵500</td>
+                                    <td>₵2,500</td>
+                                    <td>₵8,500</td>
+                                    <td>₵6,500</td>
+                                </tr>
+                                <tr>
+                                    <td>CRB Check</td>
+                                    <td>No</td>
+                                    <td>No</td>
+                                    <td>Yes</td>
+                                    <td>Yes</td>
+                                </tr>
+                                <tr>
+                                    <td>Verification Level</td>
+                                    <td>Basic</td>
+                                    <td>Enhanced</td>
+                                    <td>Full</td>
+                                    <td>Full + Vetting</td>
+                                </tr>
+                                <tr>
+                                    <td>Max Loan Size</td>
+                                    <td>₵1,500</td>
+                                    <td>₵5,000</td>
+                                    <td>₵20,000</td>
+                                    <td>₵50,000</td>
+                                </tr>
+                                <tr>
+                                    <td>Support</td>
+                                    <td>Email</td>
+                                    <td>Priority</td>
+                                    <td>24/7</td>
+                                    <td>VIP</td>
+                                </tr>
+                                <tr>
+                                    <td>Group Creation</td>
+                                    <td>Standard</td>
+                                    <td>Standard</td>
+                                    <td>Standard</td>
+                                    <td>Lender Groups</td>
+                                </tr>
+                                <tr>
+                                    <td>Interest Setting</td>
+                                    <td>Fixed 10%</td>
+                                    <td>Fixed 10%</td>
+                                    <td>Fixed 10%</td>
+                                    <td>Customizable</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- Make Payment Section -->
+                <section id="payment" class="dashboard-section">
+                    <div class="section-header">
+                        <h3>Make Subscription Payment</h3>
+                        <p>All payments are made off-platform via M-Pesa, Till Numbers, Paybill, or Bank Transfer.</p>
+                    </div>
+
+                    <div class="payment-container">
+                        <div class="payment-instructions">
+                            <div class="instruction-card">
+                                <div class="instruction-icon">1</div>
+                                <div class="instruction-content">
+                                    <h5>Select Payment Method</h5>
+                                    <p>Choose how you want to pay: M-Pesa, Till, Paybill, or Bank Transfer.</p>
+                                </div>
+                            </div>
+                            <div class="instruction-card">
+                                <div class="instruction-icon">2</div>
+                                <div class="instruction-content">
+                                    <h5>Make Payment Off-Platform</h5>
+                                    <p>Use the provided details to make payment through your chosen method.</p>
+                                </div>
+                            </div>
+                            <div class="instruction-card">
+                                <div class="instruction-icon">3</div>
+                                <div class="instruction-content">
+                                    <h5>Confirm Payment</h5>
+                                    <p>Enter your transaction details here for verification and activation.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <form class="payment-form" id="paymentForm">
+                            <div class="form-section">
+                                <h4>Payment Details</h4>
+                                <div class="payment-summary">
+                                    <div class="summary-item">
+                                        <span>Selected Tier:</span>
+                                        <span class="tier-name">Premium Tier</span>
+                                    </div>
+                                    <div class="summary-item">
+                                        <span>Billing Period:</span>
+                                        <span class="period">Monthly</span>
+                                    </div>
+                                    <div class="summary-item">
+                                        <span>Amount Due:</span>
+                                        <span class="amount">₵250</span>
+                                    </div>
+                                    <div class="summary-item">
+                                        <span>Expiry After Payment:</span>
+                                        <span class="expiry">28th Feb 2024</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-section">
+                                <h4>Choose Payment Method</h4>
+                                <div class="payment-methods">
+                                    <div class="method-option active" data-method="mpesa">
+                                        <div class="method-icon">📱</div>
+                                        <div class="method-details">
+                                            <h5>M-Pesa</h5>
+                                            <p>Send to Till Number: 123456</p>
+                                        </div>
+                                        <div class="method-check">✓</div>
+                                    </div>
+                                    <div class="method-option" data-method="till">
+                                        <div class="method-icon">🏪</div>
+                                        <div class="method-details">
+                                            <h5>Till Number</h5>
+                                            <p>Till: 987654 | Business: M-pesewa</p>
+                                        </div>
+                                        <div class="method-check">✓</div>
+                                    </div>
+                                    <div class="method-option" data-method="paybill">
+                                        <div class="method-icon">🏦</div>
+                                        <div class="method-details">
+                                            <h5>Paybill</h5>
+                                            <p>Paybill: 123456 | Account: Your Phone</p>
+                                        </div>
+                                        <div class="method-check">✓</div>
+                                    </div>
+                                    <div class="method-option" data-method="bank">
+                                        <div class="method-icon">💼</div>
+                                        <div class="method-details">
+                                            <h5>Bank Transfer</h5>
+                                            <p>Bank: Equity | Account: 123456789</p>
+                                        </div>
+                                        <div class="method-check">✓</div>
+                                    </div>
+                                </div>
+                                <input type="hidden" id="selectedMethod" value="mpesa">
+                            </div>
+
+                            <div class="form-section">
+                                <h4>Transaction Confirmation</h4>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="transactionCode">Transaction/Reference Code *</label>
+                                        <input type="text" id="transactionCode" required placeholder="e.g., M-Pesa confirmation code">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="paymentDate">Payment Date *</label>
+                                        <input type="date" id="paymentDate" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="paymentAmount">Amount Paid (₵) *</label>
+                                    <input type="number" id="paymentAmount" required min="250" step="50" value="250">
+                                </div>
+                                <div class="form-group">
+                                    <label for="payerPhone">Your Phone Number *</label>
+                                    <input type="tel" id="payerPhone" required placeholder="+254712345678">
+                                </div>
+                            </div>
+
+                            <div class="form-section">
+                                <div class="checkbox-group">
+                                    <input type="checkbox" id="confirmPayment" required>
+                                    <label for="confirmPayment">I confirm I have made the payment using the selected method. I understand that my subscription will be activated within 1 hour of verification.</label>
+                                </div>
+                            </div>
+
+                            <div class="form-actions">
+                                <button type="submit" class="btn btn-primary">Submit Payment Confirmation</button>
+                                <button type="button" class="btn btn-outline" onclick="downloadInvoice()">Download Invoice</button>
+                            </div>
+                        </form>
+
+                        <div class="payment-status" id="paymentStatus" style="display: none;">
+                            <div class="status-card success">
+                                <div class="status-icon">✅</div>
+                                <div class="status-content">
+                                    <h4>Payment Submitted for Verification</h4>
+                                    <p>Your payment confirmation has been received. Our team will verify the transaction and activate your subscription within 1 hour.</p>
+                                    <div class="status-details">
+                                        <div class="detail">
+                                            <span>Reference:</span>
+                                            <span id="statusRef">PAY-123456</span>
+                                        </div>
+                                        <div class="detail">
+                                            <span>Expected Activation:</span>
+                                            <span id="statusTime">Within 1 hour</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Payment History Section -->
+                <section id="payment-history" class="dashboard-section">
+                    <div class="section-header">
+                        <h3>Payment History</h3>
+                        <div class="section-actions">
+                            <button class="btn btn-outline" onclick="exportPayments()">Export History</button>
+                            <button class="btn btn-outline" onclick="printHistory()">Print</button>
+                        </div>
+                    </div>
+
+                    <div class="history-filters">
+                        <div class="filter-group">
+                            <label>Filter by:</label>
+                            <select id="historyFilter">
+                                <option value="all">All Payments</option>
+                                <option value="last-year">Last 12 Months</option>
+                                <option value="last-month">Last 30 Days</option>
+                                <option value="successful">Successful</option>
+                                <option value="pending">Pending</option>
+                            </select>
+                        </div>
+                        <div class="search-box">
+                            <input type="text" placeholder="Search payments...">
+                            <button class="search-btn">🔍</button>
+                        </div>
+                    </div>
+
+                    <div class="payments-table-container">
+                        <table class="payments-table">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Description</th>
+                                    <th>Tier</th>
+                                    <th>Amount</th>
+                                    <th>Method</th>
+                                    <th>Status</th>
+                                    <th>Reference</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>2024-01-28</td>
+                                    <td>Monthly Subscription - Premium</td>
+                                    <td>Premium</td>
+                                    <td>₵250</td>
+                                    <td>M-Pesa</td>
+                                    <td><span class="status-badge success">Verified</span></td>
+                                    <td>MP-123456</td>
+                                    <td><button class="btn-action" onclick="viewReceipt(1)">View</button></td>
+                                </tr>
+                                <tr>
+                                    <td>2023-12-28</td>
+                                    <td>Monthly Subscription - Premium</td>
+                                    <td>Premium</td>
+                                    <td>₵250</td>
+                                    <td>Till</td>
+                                    <td><span class="status-badge success">Verified</span></td>
+                                    <td>TILL-987654</td>
+                                    <td><button class="btn-action" onclick="viewReceipt(2)">View</button></td>
+                                </tr>
+                                <tr>
+                                    <td>2023-11-28</td>
+                                    <td>Monthly Subscription - Premium</td>
+                                    <td>Premium</td>
+                                    <td>₵250</td>
+                                    <td>Bank Transfer</td>
+                                    <td><span class="status-badge success">Verified</span></td>
+                                    <td>BANK-456789</td>
+                                    <td><button class="btn-action" onclick="viewReceipt(3)">View</button></td>
+                                </tr>
+                                <tr>
+                                    <td>2023-10-28</td>
+                                    <td>Upgrade from Basic to Premium</td>
+                                    <td>Premium</td>
+                                    <td>₵200</td>
+                                    <td>M-Pesa</td>
+                                    <td><span class="status-badge success">Verified</span></td>
+                                    <td>MP-789012</td>
+                                    <td><button class="btn-action" onclick="viewReceipt(4)">View</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <div class="table-footer">
+                            <div class="pagination">
+                                <button class="page-btn" disabled>← Previous</button>
+                                <span class="page-info">Page 1 of 2</span>
+                                <button class="page-btn">Next →</button>
+                            </div>
+                            <div class="table-stats">
+                                Total Paid: ₵950 (Last 4 months)
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="payment-summary-stats">
+                        <div class="summary-card">
+                            <h5>Total Paid (Last 12 Months)</h5>
+                            <div class="summary-value">₵3,000</div>
+                        </div>
+                        <div class="summary-card">
+                            <h5>Average Monthly</h5>
+                            <div class="summary-value">₵250</div>
+                        </div>
+                        <div class="summary-card">
+                            <h5>Successful Payments</h5>
+                            <div class="summary-value">12/12</div>
+                        </div>
+                        <div class="summary-card">
+                            <h5>Current Streak</h5>
+                            <div class="summary-value">4 months</div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-copyright">
+                <p>&copy; 2024 M-pesewa. Emergency Micro-Lending in Trusted Circles.</p>
+                <p>Subscription expiry: 28th of each month. Expired = no access. Borrowers pay NO subscription fees.</p>
+            </div>
+            <div class="footer-links">
+                <a href="../pages/contact.html">Contact Support</a>
+                <a href="../pages/qa.html">Q&A</a>
+                <a href="../pages/terms.html">Terms</a>
+                <a href="../pages/privacy.html">Privacy</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../assets/js/subscriptions.js"></script>
+    <script src="../assets/js/utils.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeSubscriptionsPage();
+            setupPaymentForm();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+    <rect width="100" height="100" rx="15" fill="#EAF1FF"/>
+    <g transform="translate(20, 20)">
+        <circle cx="30" cy="30" r="25" fill="#FF9F1C"/>
+        <circle cx="30" cy="30" r="20" fill="#FFF1E6"/>
+        <path d="M15,30 L45,30 M30,15 L30,45" stroke="#FF9F1C" stroke-width="3"/>
+        <circle cx="30" cy="30" r="8" fill="#FF4401"/>
+        <path d="M55,30 L75,30 L80,40 L75,50 L55,50 L50,40 Z" fill="#20BF6F"/>
+        <path d="M60,35 L70,35 M60,40 L70,40 M60,45 L70,45" stroke="#FFFFFF" stroke-width="2"/>
+    </g>
+    <text x="50" y="90" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#061257">Food</text>
+</svg>

@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+    <defs>
+        <linearGradient id="logo-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#0A65FC;stop-opacity:1" />
+            <stop offset="100%" style="stop-color:#061257;stop-opacity:1" />
+        </linearGradient>
+        <radialGradient id="glow-effect" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" style="stop-color:#EAF1FF;stop-opacity:0.8" />
+            <stop offset="100%" style="stop-color:#0A65FC;stop-opacity:0" />
+        </radialGradient>
+    </defs>
+    
+    <!-- Background glow -->
+    <circle cx="100" cy="100" r="85" fill="url(#glow-effect)" opacity="0.3"/>
+    
+    <!-- Main circle -->
+    <circle cx="100" cy="100" r="60" fill="url(#logo-gradient)" stroke="#FFFFFF" stroke-width="4"/>
+    
+    <!-- Currency symbol -->
+    <g fill="#FFFFFF">
+        <!-- P letter -->
+        <path d="M85,75 L85,125 L95,125 C105,125 110,120 110,110 C110,100 105,95 95,95 L95,95 L85,95 L85,85 L95,85 C102,85 107,87 107,92 C107,97 102,100 95,100 L95,100 L95,120 L90,120 L90,80 L100,80 C108,80 115,83 115,92 C115,101 108,105 100,105 L100,105 L100,125 C112,125 120,118 120,110 C120,102 112,95 100,95 L100,95 L100,75 Z"/>
+        
+        <!-- M letter -->
+        <path d="M125,75 L125,125 L135,125 L135,95 L145,125 L155,125 L165,95 L165,125 L175,125 L175,75 L165,75 L155,105 L145,75 L135,75 L135,85 L125,85 Z"/>
+    </g>
+    
+    <!-- Trust circles -->
+    <g stroke="#20BF6F" stroke-width="1.5" fill="none" opacity="0.7">
+        <circle cx="100" cy="100" r="70"/>
+        <circle cx="100" cy="100" r="75"/>
+        <circle cx="100" cy="100" r="80"/>
+    </g>
+    
+    <!-- Stars for trust rating -->
+    <g fill="#FF9F1C">
+        <path d="M50,100 C50,95 52,90 55,88 L55,88 L60,85 L65,88 C68,90 70,95 70,100 C70,105 68,110 65,112 L65,112 L60,115 L55,112 C52,110 50,105 50,100 Z" opacity="0.8"/>
+        <path d="M150,100 C150,95 152,90 155,88 L155,88 L160,85 L165,88 C168,90 170,95 170,100 C170,105 168,110 165,112 L165,112 L160,115 L155,112 C152,110 150,105 150,100 Z" opacity="0.8"/>
+    </g>
+</svg>

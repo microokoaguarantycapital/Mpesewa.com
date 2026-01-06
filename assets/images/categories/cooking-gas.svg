@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+    <rect width="100" height="100" rx="15" fill="#EAF1FF"/>
+    <g transform="translate(25, 15)">
+        <ellipse cx="25" cy="25" rx="20" ry="25" fill="#6B6B6B"/>
+        <ellipse cx="25" cy="25" rx="15" ry="20" fill="#E0E4EA"/>
+        <rect x="20" y="45" width="10" height="20" fill="#6B6B6B"/>
+        <path d="M20,50 L30,50 M20,55 L30,55 M20,60 L30,60" stroke="#FF4401" stroke-width="2"/>
+        <circle cx="25" cy="15" r="5" fill="#FF4401"/>
+    </g>
+    <text x="50" y="90" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#061257">Cooking Gas</text>
+</svg>

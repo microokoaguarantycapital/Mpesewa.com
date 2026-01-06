@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Borrower Dashboard - M-Pesewa</title>
+    <link rel="stylesheet" href="../../assets/css/main.css">
+    <link rel="stylesheet" href="../../assets/css/dashboard.css">
+    <link rel="stylesheet" href="../../assets/css/components.css">
+    <link rel="manifest" href="../../manifest.json">
+    <link rel="icon" href="../../assets/images/logo.svg" type="image/svg+xml">
+    <meta name="theme-color" content="#0A65FC">
+</head>
+<body class="dashboard-page">
+    <!-- Dashboard Header -->
+    <header class="dashboard-header">
+        <div class="header-container">
+            <div class="dashboard-brand">
+                <a href="../../index.html" class="logo-link">
+                    <div class="logo-icon">₵</div>
+                    <h1 class="logo-text">M-Pesewa<span>.com</span></h1>
+                </a>
+                <div class="dashboard-title">
+                    <h2>Borrower Dashboard</h2>
+                    <p class="user-welcome" id="userWelcome">Welcome back, [User Name]</p>
+                </div>
+            </div>
+            
+            <div class="dashboard-controls">
+                <div class="user-profile">
+                    <div class="profile-avatar" id="userAvatar">
+                        <img src="../../assets/images/icons/user.svg" alt="User Avatar">
+                    </div>
+                    <div class="profile-info">
+                        <span class="profile-name" id="profileName">Loading...</span>
+                        <span class="profile-role">Borrower</span>
+                    </div>
+                </div>
+                
+                <div class="header-actions">
+                    <button class="btn-icon" id="notificationBtn" title="Notifications">
+                        <img src="../../assets/images/icons/notification.svg" alt="Notifications">
+                        <span class="badge" id="notificationBadge">3</span>
+                    </button>
+                    <button class="btn-icon" id="helpBtn" title="Help">
+                        <img src="../../assets/images/icons/help.svg" alt="Help">
+                    </button>
+                    <button class="btn-icon" id="logoutBtn" title="Logout">
+                        <img src="../../assets/images/icons/logout.svg" alt="Logout">
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Dashboard Navigation -->
+    <nav class="dashboard-nav">
+        <div class="nav-container">
+            <ul class="nav-menu">
+                <li><a href="#overview" class="nav-link active"><img src="../../assets/images/icons/home.svg" alt=""> Overview</a></li>
+                <li><a href="#active-loans" class="nav-link"><img src="../../assets/images/icons/loan.svg" alt=""> Active Loans</a></li>
+                <li><a href="#loan-requests" class="nav-link"><img src="../../assets/images/icons/wallet.svg" alt=""> Request Loan</a></li>
+                <li><a href="#groups" class="nav-link"><img src="../../assets/images/icons/group.svg" alt=""> My Groups</a></li>
+                <li><a href="#ledgers" class="nav-link"><img src="../../assets/images/icons/ledger.svg" alt=""> Loan History</a></li>
+                <li><a href="#reputation" class="nav-link"><img src="../../assets/images/icons/rating.svg" alt=""> Reputation</a></li>
+                <li><a href="#settings" class="nav-link"><img src="../../assets/images/icons/settings.svg" alt=""> Settings</a></li>
+            </ul>
+            
+            <div class="nav-footer">
+                <div class="subscription-status">
+                    <div class="status-icon">👤</div>
+                    <div class="status-info">
+                        <span class="status-title">Borrower Account</span>
+                        <span class="status-subtitle">No Subscription Required</span>
+                    </div>
+                </div>
+                <a href="lender-dashboard.html" class="btn-switch-role">
+                    Switch to Lender Dashboard
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Dashboard Content -->
+    <main class="dashboard-content">
+        <div class="content-container">
+            <!-- Overview Section -->
+            <section id="overview" class="dashboard-section active">
+                <div class="section-header">
+                    <h3>Dashboard Overview</h3>
+                    <div class="section-actions">
+                        <button class="btn btn-primary" id="quickRequestBtn">
+                            <img src="../../assets/images/icons/wallet.svg" alt="">
+                            Quick Loan Request
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="overview-cards">
+                    <!-- Stats Card 1 -->
+                    <div class="stats-card">
+                        <div class="stats-icon" style="background-color: #EAF1FF;">
+                            <img src="../../assets/images/icons/wallet.svg" alt="Active Loans">
+                        </div>
+                        <div class="stats-content">
+                            <h4>Active Loans</h4>
+                            <div class="stats-value" id="activeLoansCount">2</div>
+                            <div class="stats-subtitle">Total Outstanding: <span id="totalOutstanding">₵3,500</span></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Stats Card 2 -->
+                    <div class="stats-card">
+                        <div class="stats-icon" style="background-color: #E8F8F1;">
+                            <img src="../../assets/images/icons/rating.svg" alt="Reputation">
+                        </div>
+                        <div class="stats-content">
+                            <h4>Reputation Score</h4>
+                            <div class="stats-value">
+                                <div class="rating-stars">
+                                    <span class="star filled">★</span>
+                                    <span class="star filled">★</span>
+                                    <span class="star filled">★</span>
+                                    <span class="star filled">★</span>
+                                    <span class="star">★</span>
+                                </div>
+                                <span class="rating-value">4.2/5.0</span>
+                            </div>
+                            <div class="stats-subtitle">Based on 15 transactions</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Stats Card 3 -->
+                    <div class="stats-card">
+                        <div class="stats-icon" style="background-color: #FFF1E6;">
+                            <img src="../../assets/images/icons/group.svg" alt="Groups">
+                        </div>
+                        <div class="stats-content">
+                            <h4>Groups Joined</h4>
+                            <div class="stats-value" id="groupsJoined">3/4</div>
+                            <div class="stats-subtitle">Maximum 4 groups allowed</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Stats Card 4 -->
+                    <div class="stats-card">
+                        <div class="stats-icon" style="background-color: #FFE8E3;">
+                            <img src="../../assets/images/icons/blacklist.svg" alt="Status">
+                        </div>
+                        <div class="stats-content">
+                            <h4>Account Status</h4>
+                            <div class="stats-value">
+                                <span class="status-badge active">Active</span>
+                            </div>
+                            <div class="stats-subtitle">No blacklist records</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Quick Actions -->
+                <div class="quick-actions">
+                    <h4>Quick Actions</h4>
+                    <div class="actions-grid">
+                        <button class="action-card" data-action="request-loan">
+                            <div class="action-icon">📝</div>
+                            <h5>Request New Loan</h5>
+                            <p>Submit loan request to lenders</p>
+                        </button>
+                        
+                        <button class="action-card" data-action="join-group">
+                            <div class="action-icon">👥</div>
+                            <h5>Join a Group</h5>
+                            <p>Find and join trusted groups</p>
+                        </button>
+                        
+                        <button class="action-card" data-action="view-ledgers">
+                            <div class="action-icon">📊</div>
+                            <h5>View Loan History</h5>
+                            <p>Check past loan records</p>
+                        </button>
+                        
+                        <button class="action-card" data-action="update-profile">
+                            <div class="action-icon">👤</div>
+                            <h5>Update Profile</h5>
+                            <p>Edit personal information</p>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Active Loans Preview -->
+                <div class="section-preview">
+                    <div class="preview-header">
+                        <h4>Active Loans</h4>
+                        <a href="#active-loans" class="view-all">View All</a>
+                    </div>
+                    <div class="preview-content">
+                        <div class="table-container">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Lender</th>
+                                        <th>Amount</th>
+                                        <th>Category</th>
+                                        <th>Due Date</th>
+                                        <th>Status</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="activeLoansTable">
+                                    <!-- Filled by JavaScript -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Active Loans Section -->
+            <section id="active-loans" class="dashboard-section">
+                <div class="section-header">
+                    <h3>Active Loans</h3>
+                    <div class="section-actions">
+                        <button class="btn btn-outline" id="refreshLoansBtn">
+                            Refresh
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="loans-container">
+                    <div class="loans-list" id="loansList">
+                        <!-- Filled by JavaScript -->
+                    </div>
+                    
+                    <div class="loan-calculator-sidebar">
+                        <h4>Loan Calculator</h4>
+                        <div id="loanCalculatorContainer">
+                            <!-- Calculator will be inserted here -->
+                        </div>
+                        
+                        <div class="repayment-tips">
+                            <h5>💡 Repayment Tips</h5>
+                            <ul>
+                                <li>Pay within 7 days to avoid 5% daily penalty</li>
+                                <li>Partial daily payments are allowed</li>
+                                <li>Default after 2 months leads to blacklisting</li>
+                                <li>Good repayment improves your rating</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Loan Requests Section -->
+            <section id="loan-requests" class="dashboard-section">
+                <div class="section-header">
+                    <h3>Request New Loan</h3>
+                    <div class="section-actions">
+                        <button class="btn btn-outline" id="viewRequestsBtn">
+                            View My Requests
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="loan-request-wizard">
+                    <!-- Step 1: Category Selection -->
+                    <div class="wizard-step active" id="step1">
+                        <h4>Step 1: Select Loan Category</h4>
+                        <p>Choose the emergency category you need funds for</p>
+                        
+                        <div class="category-selection-grid" id="categorySelection">
+                            <!-- Categories will be populated by JavaScript -->
+                        </div>
+                        
+                        <div class="wizard-actions">
+                            <button class="btn btn-primary" id="nextStep1">Next: Enter Amount</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Step 2: Amount & Details -->
+                    <div class="wizard-step" id="step2">
+                        <h4>Step 2: Loan Details</h4>
+                        <p>Enter the amount and select your preferred lender group</p>
+                        
+                        <div class="loan-details-form">
+                            <div class="form-group">
+                                <label for="loanAmount">Loan Amount (₵)</label>
+                                <input type="number" id="loanAmount" min="100" max="50000" step="100" placeholder="Enter amount">
+                                <div class="input-helper">Maximum amount depends on lender's tier</div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="loanPurpose">Purpose Description</label>
+                                <textarea id="loanPurpose" rows="3" placeholder="Briefly describe what you need the loan for"></textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="selectedGroup">Select Group</label>
+                                <select id="selectedGroup">
+                                    <option value="">Choose a group</option>
+                                    <!-- Groups will be populated by JavaScript -->
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="repaymentDays">Repayment Period</label>
+                                <select id="repaymentDays">
+                                    <option value="7">7 days (Standard)</option>
+                                    <option value="5">5 days</option>
+                                    <option value="3">3 days</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="loan-summary">
+                            <h5>Loan Summary</h5>
+                            <div class="summary-item">
+                                <span>Amount:</span>
+                                <span id="summaryAmount">₵0</span>
+                            </div>
+                            <div class="summary-item">
+                                <span>Interest (10%):</span>
+                                <span id="summaryInterest">₵0</span>
+                            </div>
+                            <div class="summary-item highlight">
+                                <span>Total Repayment:</span>
+                                <span id="summaryTotal">₵0</span>
+                            </div>
+                            <div class="summary-item">
+                                <span>Daily Payment:</span>
+                                <span id="summaryDaily">₵0</span>
+                            </div>
+                        </div>
+                        
+                        <div class="wizard-actions">
+                            <button class="btn btn-outline" id="prevStep2">Back</button>
+                            <button class="btn btn-primary" id="nextStep2">Next: Review & Submit</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Step 3: Review & Submit -->
+                    <div class="wizard-step" id="step3">
+                        <h4>Step 3: Review & Submit</h4>
+                        <p>Review your loan request before submitting to lenders</p>
+                        
+                        <div class="review-card">
+                            <h5>Loan Request Details</h5>
+                            <div class="review-details">
+                                <div class="detail-item">
+                                    <span>Category:</span>
+                                    <span id="reviewCategory">-</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span>Amount:</span>
+                                    <span id="reviewAmount">-</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span>Purpose:</span>
+                                    <span id="reviewPurpose">-</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span>Group:</span>
+                                    <span id="reviewGroup">-</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span>Repayment Period:</span>
+                                    <span id="reviewPeriod">- days</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span>Total Repayment:</span>
+                                    <span id="reviewTotal">-</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="terms-agreement">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="agreeTerms">
+                                <span>I agree to the <a href="../../pages/terms.html">Terms of Service</a> and understand that:</span>
+                            </label>
+                            <ul class="terms-list">
+                                <li>Loan disbursement happens off-platform (M-Pesa, Bank, etc.)</li>
+                                <li>10% weekly interest applies</li>
+                                <li>5% daily penalty after 7 days overdue</li>
+                                <li>Default after 2 months leads to blacklisting</li>
+                                <li>Lender ratings affect future borrowing</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="wizard-actions">
+                            <button class="btn btn-outline" id="prevStep3">Back</button>
+                            <button class="btn btn-primary" id="submitRequestBtn" disabled>
+                                Submit Loan Request
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Pending Requests -->
+                <div class="pending-requests" id="pendingRequestsSection">
+                    <h4>Pending Loan Requests</h4>
+                    <div class="requests-table" id="pendingRequestsTable">
+                        <!-- Filled by JavaScript -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Groups Section -->
+            <section id="groups" class="dashboard-section">
+                <div class="section-header">
+                    <h3>My Groups</h3>
+                    <div class="section-actions">
+                        <button class="btn btn-primary" id="joinNewGroupBtn">
+                            <img src="../../assets/images/icons/group.svg" alt="">
+                            Join New Group
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="groups-container">
+                    <!-- Groups List -->
+                    <div class="groups-list" id="groupsList">
+                        <!-- Filled by JavaScript -->
+                    </div>
+                    
+                    <!-- Group Details -->
+                    <div class="group-details" id="groupDetails">
+                        <div class="details-placeholder">
+                            <div class="placeholder-icon">👥</div>
+                            <h4>Select a Group</h4>
+                            <p>Click on a group to view details, members, and lending activity</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Ledgers Section -->
+            <section id="ledgers" class="dashboard-section">
+                <div class="section-header">
+                    <h3>Loan History</h3>
+                    <div class="section-actions">
+                        <div class="filter-options">
+                            <select id="ledgerFilter">
+                                <option value="all">All Loans</option>
+                                <option value="active">Active</option>
+                                <option value="cleared">Cleared</option>
+                                <option value="defaulted">Defaulted</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="ledgers-container">
+                    <div class="ledgers-table-container">
+                        <table class="data-table full-width">
+                            <thead>
+                                <tr>
+                                    <th>Loan ID</th>
+                                    <th>Lender</th>
+                                    <th>Amount</th>
+                                    <th>Category</th>
+                                    <th>Date</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="ledgersTable">
+                                <!-- Filled by JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <div class="ledger-stats">
+                        <h4>Loan Statistics</h4>
+                        <div class="stats-grid">
+                            <div class="stat-item">
+                                <span class="stat-label">Total Borrowed</span>
+                                <span class="stat-value" id="totalBorrowed">₵0</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">Total Repaid</span>
+                                <span class="stat-value" id="totalRepaid">₵0</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">Active Loans</span>
+                                <span class="stat-value" id="statsActive">0</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">Repayment Rate</span>
+                                <span class="stat-value" id="repaymentRate">0%</span>
+                            </div>
+                        </div>
+                        
+                        <div class="repayment-chart">
+                            <h5>Repayment Timeline</h5>
+                            <div id="repaymentChart">
+                                <!-- Chart will be inserted here -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Reputation Section -->
+            <section id="reputation" class="dashboard-section">
+                <div class="section-header">
+                    <h3>Reputation & Ratings</h3>
+                    <div class="section-actions">
+                        <button class="btn btn-outline" id="downloadReportBtn">
+                            Download Report
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="reputation-container">
+                    <!-- Rating Summary -->
+                    <div class="rating-summary">
+                        <div class="rating-overview">
+                            <div class="overview-score">
+                                <div class="score-value">4.2</div>
+                                <div class="score-label">Overall Rating</div>
+                            </div>
+                            <div class="overview-stars">
+                                <div class="star-rating-large">
+                                    <span class="star filled">★</span>
+                                    <span class="star filled">★</span>
+                                    <span class="star filled">★</span>
+                                    <span class="star filled">★</span>
+                                    <span class="star half">★</span>
+                                </div>
+                                <div class="rating-count">Based on 15 lender ratings</div>
+                            </div>
+                        </div>
+                        
+                        <div class="rating-breakdown">
+                            <h5>Rating Breakdown</h5>
+                            <div class="breakdown-item">
+                                <span class="breakdown-label">5 Stars</span>
+                                <div class="breakdown-bar">
+                                    <div class="bar-fill" style="width: 60%;"></div>
+                                </div>
+                                <span class="breakdown-value">9 ratings</span>
+                            </div>
+                            <div class="breakdown-item">
+                                <span class="breakdown-label">4 Stars</span>
+                                <div class="breakdown-bar">
+                                    <div class="bar-fill" style="width: 20%;"></div>
+                                </div>
+                                <span class="breakdown-value">3 ratings</span>
+                            </div>
+                            <div class="breakdown-item">
+                                <span class="breakdown-label">3 Stars</span>
+                                <div class="breakdown-bar">
+                                    <div class="bar-fill" style="width: 13%;"></div>
+                                </div>
+                                <span class="breakdown-value">2 ratings</span>
+                            </div>
+                            <div class="breakdown-item">
+                                <span class="breakdown-label">2 Stars</span>
+                                <div class="breakdown-bar">
+                                    <div class="bar-fill" style="width: 7%;"></div>
+                                </div>
+                                <span class="breakdown-value">1 rating</span>
+                            </div>
+                            <div class="breakdown-item">
+                                <span class="breakdown-label">1 Star</span>
+                                <div class="breakdown-bar">
+                                    <div class="bar-fill" style="width: 0%;"></div>
+                                </div>
+                                <span class="breakdown-value">0 ratings</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Rating History -->
+                    <div class="rating-history">
+                        <h5>Recent Ratings</h5>
+                        <div class="history-list" id="ratingHistory">
+                            <!-- Filled by JavaScript -->
+                        </div>
+                        
+                        <div class="reputation-tips">
+                            <h5>💡 Improve Your Rating</h5>
+                            <ul>
+                                <li>Always repay loans on time</li>
+                                <li>Communicate with lenders if you face difficulties</li>
+                                <li>Request reasonable loan amounts</li>
+                                <li>Maintain good relationships in groups</li>
+                                <li>Avoid multiple simultaneous loans</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Blacklist Status -->
+                <div class="blacklist-status" id="blacklistStatus">
+                    <div class="status-header">
+                        <h5>Blacklist Status</h5>
+                        <span class="status-badge safe">Clean Record</span>
+                    </div>
+                    <p>You have no blacklist records. Maintain timely repayments to keep your record clean.</p>
+                </div>
+            </section>
+
+            <!-- Settings Section -->
+            <section id="settings" class="dashboard-section">
+                <div class="section-header">
+                    <h3>Account Settings</h3>
+                    <div class="section-actions">
+                        <button class="btn btn-primary" id="saveSettingsBtn">
+                            Save Changes
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="settings-container">
+                    <!-- Profile Settings -->
+                    <div class="settings-card">
+                        <h4>Profile Information</h4>
+                        <form id="profileForm">
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label for="profileName">Full Name</label>
+                                    <input type="text" id="profileName" value="John Doe">
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="profilePhone">Phone Number</label>
+                                    <input type="tel" id="profilePhone" value="+254712345678">
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="profileEmail">Email Address</label>
+                                    <input type="email" id="profileEmail" value="john.doe@example.com">
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="profileLocation">Location</label>
+                                    <input type="text" id="profileLocation" value="Nairobi, Kenya">
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="profileNationalId">National ID</label>
+                                    <input type="text" id="profileNationalId" value="12345678" readonly>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="profileOccupation">Occupation</label>
+                                    <input type="text" id="profileOccupation" value="Software Developer">
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="profileBio">Bio / Description</label>
+                                <textarea id="profileBio" rows="3" placeholder="Tell lenders about yourself">Reliable borrower with excellent repayment history.</textarea>
+                            </div>
+                        </form>
+                    </div>
+                    
+                    <!-- Security Settings -->
+                    <div class="settings-card">
+                        <h4>Security & Privacy</h4>
+                        <div class="security-options">
+                            <div class="option-item">
+                                <div class="option-info">
+                                    <h5>Change Password</h5>
+                                    <p>Update your account password</p>
+                                </div>
+                                <button class="btn btn-outline" id="changePasswordBtn">Change</button>
+                            </div>
+                            
+                            <div class="option-item">
+                                <div class="option-info">
+                                    <h5>Two-Factor Authentication</h5>
+                                    <p>Add extra security to your account</p>
+                                </div>
+                                <label class="switch">
+                                    <input type="checkbox" id="twoFactorToggle">
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                            
+                            <div class="option-item">
+                                <div class="option-info">
+                                    <h5>Login Notifications</h5>
+                                    <p>Get alerts for new logins</p>
+                                </div>
+                                <label class="switch">
+                                    <input type="checkbox" id="loginNotificationsToggle" checked>
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                            
+                            <div class="option-item">
+                                <div class="option-info">
+                                    <h5>Data Export</h5>
+                                    <p>Download your account data</p>
+                                </div>
+                                <button class="btn btn-outline" id="exportDataBtn">Export</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Notification Settings -->
+                    <div class="settings-card">
+                        <h4>Notifications</h4>
+                        <div class="notification-options">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="notifyLoanApproval" checked>
+                                <span>Loan approval notifications</span>
+                            </label>
+                            
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="notifyRepaymentReminder" checked>
+                                <span>Repayment reminders</span>
+                            </label>
+                            
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="notifyGroupUpdates" checked>
+                                <span>Group updates and announcements</span>
+                            </label>
+                            
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="notifyRatingUpdates" checked>
+                                <span>Rating updates</span>
+                            </label>
+                            
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="notifyPromotional" checked>
+                                <span>Promotional offers</span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <!-- Account Management -->
+                    <div class="settings-card danger-zone">
+                        <h4>Account Management</h4>
+                        <div class="danger-options">
+                            <div class="option-item">
+                                <div class="option-info">
+                                    <h5>Switch to Lender Account</h5>
+                                    <p>Register as a lender to start lending</p>
+                                </div>
+                                <a href="lender-dashboard.html" class="btn btn-primary">Switch Now</a>
+                            </div>
+                            
+                            <div class="option-item">
+                                <div class="option-info">
+                                    <h5>Deactivate Account</h5>
+                                    <p>Temporarily deactivate your borrower account</p>
+                                </div>
+                                <button class="btn btn-outline" id="deactivateAccountBtn">Deactivate</button>
+                            </div>
+                            
+                            <div class="option-item">
+                                <div class="option-info">
+                                    <h5>Delete Account</h5>
+                                    <p>Permanently delete your account and all data</p>
+                                </div>
+                                <button class="btn btn-danger" id="deleteAccountBtn">Delete Account</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Dashboard Footer -->
+    <footer class="dashboard-footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <p>© 2024 M-Pesewa.com - Borrower Dashboard</p>
+                    <p>Emergency Micro-Lending in Trusted Circles</p>
+                </div>
+                
+                <div class="footer-links">
+                    <a href="../../pages/contact.html">Support</a>
+                    <a href="../../pages/terms.html">Terms</a>
+                    <a href="../../pages/privacy.html">Privacy</a>
+                    <a href="../../pages/qa.html">FAQ</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modals -->
+    <div class="modal" id="quickRequestModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Quick Loan Request</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <!-- Quick request form -->
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="groupJoinModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Join New Group</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <!-- Group join form -->
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="notificationModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Notifications</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <!-- Notifications list -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../../assets/js/utils.js"></script>
+    <script src="../../assets/js/calculator.js"></script>
+    <script src="../../assets/js/borrowing.js"></script>
+    <script src="../../assets/js/dashboard-borrower.js"></script>
+</body>
+</html>

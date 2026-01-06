@@ -1,0 +1,1501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - M-Pesewa</title>
+    <link rel="stylesheet" href="../../assets/css/main.css">
+    <link rel="stylesheet" href="../../assets/css/dashboard.css">
+    <link rel="stylesheet" href="../../assets/css/components.css">
+    <link rel="stylesheet" href="../../assets/css/tables.css">
+    <link rel="manifest" href="../../manifest.json">
+    <link rel="icon" href="../../assets/images/logo.svg" type="image/svg+xml">
+    <meta name="theme-color" content="#061257">
+</head>
+<body class="dashboard-page admin-dashboard">
+    <!-- Dashboard Header -->
+    <header class="dashboard-header admin-header">
+        <div class="header-container">
+            <div class="dashboard-brand">
+                <a href="../../index.html" class="logo-link">
+                    <div class="logo-icon">₵</div>
+                    <h1 class="logo-text">M-Pesewa<span>.com</span></h1>
+                </a>
+                <div class="dashboard-title">
+                    <h2>Admin Dashboard</h2>
+                    <p class="user-welcome">Platform Administration & Moderation</p>
+                </div>
+            </div>
+            
+            <div class="dashboard-controls">
+                <div class="admin-badges">
+                    <div class="admin-badge super-admin">
+                        <span class="badge-icon">👑</span>
+                        <span class="badge-text">Super Admin</span>
+                    </div>
+                    <div class="admin-badge platform-health">
+                        <span class="badge-icon">📊</span>
+                        <span class="badge-text">Platform: Healthy</span>
+                    </div>
+                </div>
+                
+                <div class="user-profile">
+                    <div class="profile-avatar admin-avatar">
+                        <img src="../../assets/images/icons/user.svg" alt="Admin Avatar">
+                    </div>
+                    <div class="profile-info">
+                        <span class="profile-name">System Administrator</span>
+                        <span class="profile-role">Platform Admin</span>
+                    </div>
+                </div>
+                
+                <div class="header-actions">
+                    <button class="btn-icon" id="adminNotificationsBtn" title="Admin Notifications">
+                        <img src="../../assets/images/icons/notification.svg" alt="Notifications">
+                        <span class="badge critical">12</span>
+                    </button>
+                    <button class="btn-icon" id="emergencyBtn" title="Emergency Mode">
+                        <img src="../../assets/images/icons/security.svg" alt="Security">
+                    </button>
+                    <button class="btn-icon" id="adminLogoutBtn" title="Logout">
+                        <img src="../../assets/images/icons/logout.svg" alt="Logout">
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Dashboard Navigation -->
+    <nav class="dashboard-nav admin-nav">
+        <div class="nav-container">
+            <div class="admin-nav-header">
+                <h4>Admin Controls</h4>
+                <div class="nav-status">
+                    <span class="status-indicator active"></span>
+                    <span>System Active</span>
+                </div>
+            </div>
+            
+            <ul class="nav-menu admin-menu">
+                <li><a href="#overview" class="nav-link active"><img src="../../assets/images/icons/home.svg" alt=""> Overview</a></li>
+                <li><a href="#user-management" class="nav-link"><img src="../../assets/images/icons/user.svg" alt=""> User Management</a></li>
+                <li><a href="#blacklist-management" class="nav-link"><img src="../../assets/images/icons/blacklist.svg" alt=""> Blacklist</a></li>
+                <li><a href="#group-moderation" class="nav-link"><img src="../../assets/images/icons/group.svg" alt=""> Group Moderation</a></li>
+                <li><a href="#ledger-overrides" class="nav-link"><img src="../../assets/images/icons/ledger.svg" alt=""> Ledger Overrides</a></li>
+                <li><a href="#subscription-management" class="nav-link"><img src="../../assets/images/icons/subscription.svg" alt=""> Subscriptions</a></li>
+                <li><a href="#debt-collectors" class="nav-link"><img src="../../assets/images/icons/debt-collector.svg" alt=""> Debt Collectors</a></li>
+                <li><a href="#reports" class="nav-link"><img src="../../assets/images/icons/calculator.svg" alt=""> Reports</a></li>
+                <li><a href="#system-settings" class="nav-link"><img src="../../assets/images/icons/settings.svg" alt=""> System Settings</a></li>
+                <li><a href="#audit-logs" class="nav-link"><img src="../../assets/images/icons/security.svg" alt=""> Audit Logs</a></li>
+            </ul>
+            
+            <div class="nav-footer admin-footer">
+                <div class="system-stats">
+                    <div class="stat-item">
+                        <span class="stat-label">Platform Users</span>
+                        <span class="stat-value">10,245</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Active Groups</span>
+                        <span class="stat-value">1,850</span>
+                    </div>
+                </div>
+                <div class="system-actions">
+                    <button class="btn-system-action" id="systemRefreshBtn">
+                        Refresh System
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Dashboard Content -->
+    <main class="dashboard-content admin-content">
+        <div class="content-container">
+            <!-- Overview Section -->
+            <section id="overview" class="dashboard-section active">
+                <div class="section-header">
+                    <h3>Platform Overview</h3>
+                    <div class="section-actions">
+                        <button class="btn btn-primary" id="refreshOverviewBtn">
+                            Refresh Data
+                        </button>
+                        <button class="btn btn-outline" id="exportOverviewBtn">
+                            Export Report
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="platform-stats-grid">
+                    <!-- Total Users Card -->
+                    <div class="platform-stat-card">
+                        <div class="stat-icon total-users">👥</div>
+                        <div class="stat-content">
+                            <h4>Total Users</h4>
+                            <div class="stat-value">10,245</div>
+                            <div class="stat-breakdown">
+                                <span>Lenders: 2,150</span>
+                                <span>Borrowers: 8,095</span>
+                            </div>
+                            <div class="stat-trend up">+15% this month</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Active Groups Card -->
+                    <div class="platform-stat-card">
+                        <div class="stat-icon groups">👥</div>
+                        <div class="stat-content">
+                            <h4>Active Groups</h4>
+                            <div class="stat-value">1,850</div>
+                            <div class="stat-breakdown">
+                                <span>Countries: 12</span>
+                                <span>Avg Size: 85</span>
+                            </div>
+                            <div class="stat-trend up">+8% this month</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Total Loans Card -->
+                    <div class="platform-stat-card">
+                        <div class="stat-icon loans">💰</div>
+                        <div class="stat-content">
+                            <h4>Total Loans</h4>
+                            <div class="stat-value">₵12.5M</div>
+                            <div class="stat-breakdown">
+                                <span>Active: ₵2.1M</span>
+                                <span>Cleared: ₵10.4M</span>
+                            </div>
+                            <div class="stat-trend up">+22% this month</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Default Rate Card -->
+                    <div class="platform-stat-card">
+                        <div class="stat-icon defaults">📉</div>
+                        <div class="stat-content">
+                            <h4>Default Rate</h4>
+                            <div class="stat-value">0.8%</div>
+                            <div class="stat-breakdown">
+                                <span>Blacklisted: 82</span>
+                                <span>At Risk: 150</span>
+                            </div>
+                            <div class="stat-trend down">-0.2% this month</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Subscription Revenue Card -->
+                    <div class="platform-stat-card">
+                        <div class="stat-icon revenue">💳</div>
+                        <div class="stat-content">
+                            <h4>Subscription Revenue</h4>
+                            <div class="stat-value">₵425,000</div>
+                            <div class="stat-breakdown">
+                                <span>This Month: ₵45,000</span>
+                                <span>Collections: 98%</span>
+                            </div>
+                            <div class="stat-trend up">+18% this month</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Platform Health Card -->
+                    <div class="platform-stat-card">
+                        <div class="stat-icon health">❤️</div>
+                        <div class="stat-content">
+                            <h4>Platform Health</h4>
+                            <div class="stat-value">98.5%</div>
+                            <div class="stat-breakdown">
+                                <span>Uptime: 99.9%</span>
+                                <span>Support: 4.8/5</span>
+                            </div>
+                            <div class="stat-trend stable">±0% this month</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Platform Alerts -->
+                <div class="platform-alerts">
+                    <h4>System Alerts & Notifications</h4>
+                    <div class="alerts-container" id="systemAlerts">
+                        <div class="alert-card critical">
+                            <div class="alert-icon">🚨</div>
+                            <div class="alert-content">
+                                <h5>Critical: Subscription Collection Issue</h5>
+                                <p>5 lenders failed subscription payment on 28th. Requires manual follow-up.</p>
+                                <div class="alert-meta">2 hours ago • Requires Action</div>
+                            </div>
+                            <button class="btn-alert-action">Resolve</button>
+                        </div>
+                        
+                        <div class="alert-card warning">
+                            <div class="alert-icon">⚠️</div>
+                            <div class="alert-content">
+                                <h5>Warning: High Default Group</h5>
+                                <p>"Nairobi Business Group" has 15% default rate. Requires investigation.</p>
+                                <div class="alert-meta">5 hours ago • Monitor</div>
+                            </div>
+                            <button class="btn-alert-action">Investigate</button>
+                        </div>
+                        
+                        <div class="alert-card info">
+                            <div class="alert-icon">ℹ️</div>
+                            <div class="alert-content">
+                                <h5>Info: System Maintenance Scheduled</h5>
+                                <p>Platform maintenance scheduled for Sunday 2 AM - 4 AM UTC.</p>
+                                <div class="alert-meta">1 day ago • Scheduled</div>
+                            </div>
+                            <button class="btn-alert-action">Acknowledge</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Recent Activities -->
+                <div class="recent-activities">
+                    <div class="activities-header">
+                        <h4>Recent Admin Activities</h4>
+                        <a href="#audit-logs" class="view-all">View All Logs</a>
+                    </div>
+                    <div class="activities-list" id="recentActivities">
+                        <!-- Filled by JavaScript -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- User Management Section -->
+            <section id="user-management" class="dashboard-section">
+                <div class="section-header">
+                    <h3>User Management</h3>
+                    <div class="section-actions">
+                        <div class="user-search">
+                            <input type="text" id="userSearch" placeholder="Search users by name, phone, ID...">
+                            <button class="btn-search">🔍</button>
+                        </div>
+                        <button class="btn btn-primary" id="createUserBtn">
+                            Create User
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="user-management-container">
+                    <!-- User Filters -->
+                    <div class="user-filters">
+                        <div class="filter-group">
+                            <label>User Type:</label>
+                            <select id="userTypeFilter">
+                                <option value="all">All Users</option>
+                                <option value="lender">Lenders Only</option>
+                                <option value="borrower">Borrowers Only</option>
+                                <option value="dual">Dual Role</option>
+                            </select>
+                        </div>
+                        
+                        <div class="filter-group">
+                            <label>Country:</label>
+                            <select id="userCountryFilter">
+                                <option value="all">All Countries</option>
+                                <option value="kenya">Kenya</option>
+                                <option value="uganda">Uganda</option>
+                                <option value="tanzania">Tanzania</option>
+                                <option value="ghana">Ghana</option>
+                                <option value="nigeria">Nigeria</option>
+                                <!-- More countries -->
+                            </select>
+                        </div>
+                        
+                        <div class="filter-group">
+                            <label>Status:</label>
+                            <select id="userStatusFilter">
+                                <option value="all">All Status</option>
+                                <option value="active">Active</option>
+                                <option value="suspended">Suspended</option>
+                                <option value="inactive">Inactive</option>
+                                <option value="blacklisted">Blacklisted</option>
+                            </select>
+                        </div>
+                        
+                        <div class="filter-group">
+                            <label>Date Range:</label>
+                            <input type="date" id="userDateFrom">
+                            <span>to</span>
+                            <input type="date" id="userDateTo">
+                        </div>
+                    </div>
+                    
+                    <!-- Users Table -->
+                    <div class="users-table-container">
+                        <table class="data-table full-width" id="usersTable">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>Type</th>
+                                    <th>Country</th>
+                                    <th>Phone</th>
+                                    <th>Groups</th>
+                                    <th>Status</th>
+                                    <th>Joined</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Filled by JavaScript -->
+                            </tbody>
+                        </table>
+                        
+                        <div class="table-pagination">
+                            <button class="btn-pagination prev">← Previous</button>
+                            <span class="pagination-info">Page 1 of 25</span>
+                            <button class="btn-pagination next">Next →</button>
+                        </div>
+                    </div>
+                    
+                    <!-- User Actions Panel -->
+                    <div class="user-actions-panel" id="userActionsPanel">
+                        <div class="panel-header">
+                            <h4>Selected User Actions</h4>
+                            <span class="panel-hint">No user selected</span>
+                        </div>
+                        
+                        <div class="panel-actions">
+                            <button class="btn-action" data-action="view-profile">👤 View Profile</button>
+                            <button class="btn-action" data-action="edit-user">✏️ Edit User</button>
+                            <button class="btn-action" data-action="suspend-user">⏸️ Suspend</button>
+                            <button class="btn-action" data-action="reset-password">🔑 Reset Password</button>
+                            <button class="btn-action" data-action="view-ledgers">📊 View Ledgers</button>
+                            <button class="btn-action" data-action="message-user">💬 Message</button>
+                            <button class="btn-action danger" data-action="delete-user">🗑️ Delete User</button>
+                        </div>
+                        
+                        <div class="panel-stats" id="userStats">
+                            <!-- User statistics will appear here -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Blacklist Management Section -->
+            <section id="blacklist-management" class="dashboard-section">
+                <div class="section-header">
+                    <h3>Blacklist Management</h3>
+                    <div class="section-actions">
+                        <button class="btn btn-primary" id="addBlacklistBtn">
+                            Add to Blacklist
+                        </button>
+                        <button class="btn btn-outline" id="exportBlacklistBtn">
+                            Export List
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="blacklist-container">
+                    <!-- Blacklist Statistics -->
+                    <div class="blacklist-stats">
+                        <div class="stat-card">
+                            <div class="stat-icon">🚫</div>
+                            <div class="stat-content">
+                                <h5>Total Blacklisted</h5>
+                                <div class="stat-value">82</div>
+                                <div class="stat-change up">+5 this month</div>
+                            </div>
+                        </div>
+                        
+                        <div class="stat-card">
+                            <div class="stat-icon">💰</div>
+                            <div class="stat-content">
+                                <h5>Total Default Amount</h5>
+                                <div class="stat-value">₵245,000</div>
+                                <div class="stat-change down">-12% from last month</div>
+                            </div>
+                        </div>
+                        
+                        <div class="stat-card">
+                            <div class="stat-icon">📅</div>
+                            <div class="stat-content">
+                                <h5>Average Overdue</h5>
+                                <div class="stat-value">45 days</div>
+                                <div class="stat-change stable">No change</div>
+                            </div>
+                        </div>
+                        
+                        <div class="stat-card">
+                            <div class="stat-icon">🔄</div>
+                            <div class="stat-content">
+                                <h5>Recovered This Month</h5>
+                                <div class="stat-value">₵18,500</div>
+                                <div class="stat-change up">+25% from last month</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Blacklist Table -->
+                    <div class="blacklist-table-container">
+                        <table class="data-table full-width" id="blacklistTable">
+                            <thead>
+                                <tr>
+                                    <th>Borrower</th>
+                                    <th>Amount</th>
+                                    <th>Lender</th>
+                                    <th>Group</th>
+                                    <th>Days Overdue</th>
+                                    <th>Status</th>
+                                    <th>Blacklisted</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Filled by JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <!-- Blacklist Actions -->
+                    <div class="blacklist-actions">
+                        <h4>Bulk Actions</h4>
+                        <div class="bulk-actions-grid">
+                            <button class="btn-bulk-action" data-action="send-reminders">
+                                📧 Send Reminders
+                            </button>
+                            <button class="btn-bulk-action" data-action="assign-collectors">
+                                👥 Assign Debt Collectors
+                            </button>
+                            <button class="btn-bulk-action" data-action="update-status">
+                                🔄 Update Status
+                            </button>
+                            <button class="btn-bulk-action danger" data-action="permanent-blacklist">
+                                🚫 Permanent Blacklist
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Group Moderation Section -->
+            <section id="group-moderation" class="dashboard-section">
+                <div class="section-header">
+                    <h3>Group Moderation</h3>
+                    <div class="section-actions">
+                        <button class="btn btn-primary" id="createGroupBtn">
+                            Create Group
+                        </button>
+                        <button class="btn btn-outline" id="analyzeGroupsBtn">
+                            Analyze All Groups
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="group-moderation-container">
+                    <!-- Group Statistics -->
+                    <div class="group-stats-overview">
+                        <div class="stat-item">
+                            <span class="stat-label">Total Groups</span>
+                            <span class="stat-value">1,850</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Active Today</span>
+                            <span class="stat-value">1,240</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">At Risk Groups</span>
+                            <span class="stat-value">12</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Avg Members</span>
+                            <span class="stat-value">85</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Groups Table -->
+                    <div class="groups-table-container">
+                        <table class="data-table full-width" id="groupsTable">
+                            <thead>
+                                <tr>
+                                    <th>Group Name</th>
+                                    <th>Country</th>
+                                    <th>Admin</th>
+                                    <th>Members</th>
+                                    <th>Lenders</th>
+                                    <th>Total Lent</th>
+                                    <th>Default Rate</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Filled by JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <!-- Group Analysis -->
+                    <div class="group-analysis">
+                        <h4>Group Risk Analysis</h4>
+                        <div class="analysis-charts">
+                            <div class="chart-container">
+                                <h5>Default Rate by Country</h5>
+                                <div id="countryDefaultChart">
+                                    <!-- Chart will be inserted -->
+                                </div>
+                            </div>
+                            
+                            <div class="chart-container">
+                                <h5>Group Size vs Default Rate</h5>
+                                <div id="sizeDefaultChart">
+                                    <!-- Chart will be inserted -->
+                                </div>
+                            </div>
+                            
+                            <div class="chart-container">
+                                <h5>Monthly Group Activity</h5>
+                                <div id="groupActivityChart">
+                                    <!-- Chart will be inserted -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Group Moderation Tools -->
+                    <div class="group-moderation-tools">
+                        <h4>Moderation Tools</h4>
+                        <div class="tools-grid">
+                            <div class="tool-card">
+                                <div class="tool-icon">👁️</div>
+                                <h5>Group Inspection</h5>
+                                <p>View detailed group analytics and member activities</p>
+                                <button class="btn-tool">Inspect Group</button>
+                            </div>
+                            
+                            <div class="tool-card">
+                                <div class="tool-icon">⚖️</div>
+                                <h5>Dispute Resolution</h5>
+                                <p>Resolve disputes between group members and lenders</p>
+                                <button class="btn-tool">View Disputes</button>
+                            </div>
+                            
+                            <div class="tool-card">
+                                <div class="tool-icon">🔄</div>
+                                <h5>Admin Transfer</h5>
+                                <p>Transfer group admin rights to another member</p>
+                                <button class="btn-tool">Transfer Admin</button>
+                            </div>
+                            
+                            <div class="tool-card">
+                                <div class="tool-icon">🚫</div>
+                                <h5>Group Suspension</h5>
+                                <p>Temporarily suspend problematic groups</p>
+                                <button class="btn-tool">Suspend Group</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Ledger Overrides Section -->
+            <section id="ledger-overrides" class="dashboard-section">
+                <div class="section-header">
+                    <h3>Ledger Overrides & Corrections</h3>
+                    <div class="section-actions">
+                        <button class="btn btn-primary" id="createLedgerOverrideBtn">
+                            Create Override
+                        </button>
+                        <button class="btn btn-outline" id="auditLedgersBtn">
+                            Audit Ledgers
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="ledger-overrides-container">
+                    <!-- Override Statistics -->
+                    <div class="override-stats">
+                        <div class="stat-item">
+                            <span class="stat-label">Total Overrides This Month</span>
+                            <span class="stat-value">24</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Pending Approvals</span>
+                            <span class="stat-value">5</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Correction Rate</span>
+                            <span class="stat-value">98.2%</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Avg Correction Amount</span>
+                            <span class="stat-value">₵1,250</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Override Requests -->
+                    <div class="override-requests">
+                        <h4>Pending Override Requests</h4>
+                        <div class="requests-list" id="overrideRequests">
+                            <!-- Filled by JavaScript -->
+                        </div>
+                    </div>
+                    
+                    <!-- Ledger Search -->
+                    <div class="ledger-search-tool">
+                        <h4>Ledger Search & Edit</h4>
+                        <div class="search-container">
+                            <input type="text" id="ledgerSearch" placeholder="Search by borrower, lender, loan ID...">
+                            <button class="btn-search">Search</button>
+                        </div>
+                        
+                        <div class="search-results" id="ledgerSearchResults">
+                            <!-- Results will appear here -->
+                        </div>
+                    </div>
+                    
+                    <!-- Override Form -->
+                    <div class="override-form-container">
+                        <h4>Create Manual Override</h4>
+                        <form id="overrideForm">
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label for="overrideType">Override Type</label>
+                                    <select id="overrideType" required>
+                                        <option value="">Select type</option>
+                                        <option value="interest-correction">Interest Correction</option>
+                                        <option value="penalty-removal">Penalty Removal</option>
+                                        <option value="status-change">Status Change</option>
+                                        <option value="amount-correction">Amount Correction</option>
+                                        <option value="blacklist-removal">Blacklist Removal</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="ledgerId">Ledger ID</label>
+                                    <input type="text" id="ledgerId" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="overrideAmount">Adjustment Amount (₵)</label>
+                                    <input type="number" id="overrideAmount" step="0.01">
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="overrideReason">Reason for Override</label>
+                                    <textarea id="overrideReason" rows="3" required></textarea>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="overrideEvidence">Evidence / Supporting Documents</label>
+                                <input type="file" id="overrideEvidence" multiple>
+                            </div>
+                            
+                            <div class="form-actions">
+                                <button type="button" class="btn btn-outline" id="cancelOverrideBtn">Cancel</button>
+                                <button type="submit" class="btn btn-primary">Submit Override</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Subscription Management Section -->
+            <section id="subscription-management" class="dashboard-section">
+                <div class="section-header">
+                    <h3>Subscription Management</h3>
+                    <div class="section-actions">
+                        <button class="btn btn-primary" id="sendRemindersBtn">
+                            Send Renewal Reminders
+                        </button>
+                        <button class="btn btn-outline" id="generateInvoicesBtn">
+                            Generate Invoices
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="subscription-management-container">
+                    <!-- Subscription Overview -->
+                    <div class="subscription-overview">
+                        <div class="overview-card">
+                            <h4>Revenue Overview</h4>
+                            <div class="revenue-stats">
+                                <div class="revenue-item">
+                                    <span class="label">Monthly Revenue</span>
+                                    <span class="value">₵45,000</span>
+                                </div>
+                                <div class="revenue-item">
+                                    <span class="label">Annual Revenue</span>
+                                    <span class="value">₵425,000</span>
+                                </div>
+                                <div class="revenue-item">
+                                    <span class="label">Collection Rate</span>
+                                    <span class="value">98.5%</span>
+                                </div>
+                                <div class="revenue-item">
+                                    <span class="label">Pending Collections</span>
+                                    <span class="value">₵2,500</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="overview-card">
+                            <h4>Tier Distribution</h4>
+                            <div class="tier-distribution">
+                                <div class="tier-item">
+                                    <span class="tier-name">Basic</span>
+                                    <div class="tier-bar">
+                                        <div class="bar-fill" style="width: 40%;"></div>
+                                    </div>
+                                    <span class="tier-value">850 lenders</span>
+                                </div>
+                                <div class="tier-item">
+                                    <span class="tier-name">Premium</span>
+                                    <div class="tier-bar">
+                                        <div class="bar-fill" style="width: 35%;"></div>
+                                    </div>
+                                    <span class="tier-value">750 lenders</span>
+                                </div>
+                                <div class="tier-item">
+                                    <span class="tier-name">Super</span>
+                                    <div class="tier-bar">
+                                        <div class="bar-fill" style="width: 20%;"></div>
+                                    </div>
+                                    <span class="tier-value">450 lenders</span>
+                                </div>
+                                <div class="tier-item">
+                                    <span class="tier-name">Lender of Lenders</span>
+                                    <div class="tier-bar">
+                                        <div class="bar-fill" style="width: 5%;"></div>
+                                    </div>
+                                    <span class="tier-value">100 lenders</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Expiring Subscriptions -->
+                    <div class="expiring-subscriptions">
+                        <h4>Subscriptions Expiring Soon</h4>
+                        <div class="expiring-list" id="expiringSubscriptions">
+                            <!-- Filled by JavaScript -->
+                        </div>
+                    </div>
+                    
+                    <!-- Payment Issues -->
+                    <div class="payment-issues">
+                        <h4>Payment Issues & Failed Collections</h4>
+                        <table class="data-table" id="paymentIssuesTable">
+                            <thead>
+                                <tr>
+                                    <th>Lender</th>
+                                    <th>Tier</th>
+                                    <th>Amount</th>
+                                    <th>Due Date</th>
+                                    <th>Attempts</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Filled by JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <!-- Subscription Tools -->
+                    <div class="subscription-tools">
+                        <h4>Management Tools</h4>
+                        <div class="tools-grid">
+                            <div class="tool-card">
+                                <div class="tool-icon">📧</div>
+                                <h5>Bulk Email</h5>
+                                <p>Send emails to specific subscription tiers</p>
+                                <button class="btn-tool">Compose Email</button>
+                            </div>
+                            
+                            <div class="tool-card">
+                                <div class="tool-icon">📱</div>
+                                <h5>SMS Campaign</h5>
+                                <p>Send SMS reminders for renewals</p>
+                                <button class="btn-tool">Send SMS</button>
+                            </div>
+                            
+                            <div class="tool-card">
+                                <div class="tool-icon">💳</div>
+                                <h5>Payment Extension</h5>
+                                <p>Grant payment extensions to lenders</p>
+                                <button class="btn-tool">Grant Extension</button>
+                            </div>
+                            
+                            <div class="tool-card">
+                                <div class="tool-icon">📊</div>
+                                <h5>Revenue Reports</h5>
+                                <p>Generate detailed revenue reports</p>
+                                <button class="btn-tool">Generate Report</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Debt Collectors Section -->
+            <section id="debt-collectors" class="dashboard-section">
+                <div class="section-header">
+                    <h3>Debt Collectors Management</h3>
+                    <div class="section-actions">
+                        <button class="btn btn-primary" id="addCollectorBtn">
+                            Add Collector
+                        </button>
+                        <button class="btn btn-outline" id="verifyCollectorsBtn">
+                            Verify All
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="debt-collectors-container">
+                    <!-- Collectors Statistics -->
+                    <div class="collectors-stats">
+                        <div class="stat-card">
+                            <div class="stat-icon">👥</div>
+                            <div class="stat-content">
+                                <h5>Total Collectors</h5>
+                                <div class="stat-value">200</div>
+                                <div class="stat-change">Verified: 180</div>
+                            </div>
+                        </div>
+                        
+                        <div class="stat-card">
+                            <div class="stat-icon">💰</div>
+                            <div class="stat-content">
+                                <h5>Total Recovered</h5>
+                                <div class="stat-value">₵85,000</div>
+                                <div class="stat-change">This Month: ₵12,500</div>
+                            </div>
+                        </div>
+                        
+                        <div class="stat-card">
+                            <div class="stat-icon">📈</div>
+                            <div class="stat-content">
+                                <h5>Success Rate</h5>
+                                <div class="stat-value">65%</div>
+                                <div class="stat-change">+5% from last month</div>
+                            </div>
+                        </div>
+                        
+                        <div class="stat-card">
+                            <div class="stat-icon">⭐</div>
+                            <div class="stat-content">
+                                <h5>Avg Rating</h5>
+                                <div class="stat-value">4.2/5</div>
+                                <div class="stat-change">Based on 120 reviews</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Collectors Table -->
+                    <div class="collectors-table-container">
+                        <table class="data-table full-width" id="collectorsTable">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Company</th>
+                                    <th>Country</th>
+                                    <th>Contact</th>
+                                    <th>Specialization</th>
+                                    <th>Success Rate</th>
+                                    <th>Rating</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Filled by JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <!-- Collector Assignment -->
+                    <div class="collector-assignment">
+                        <h4>Assign Collectors to Cases</h4>
+                        <div class="assignment-tool">
+                            <div class="tool-inputs">
+                                <select id="selectCollector">
+                                    <option value="">Select Collector</option>
+                                    <!-- Filled by JavaScript -->
+                                </select>
+                                <select id="selectCase">
+                                    <option value="">Select Blacklist Case</option>
+                                    <!-- Filled by JavaScript -->
+                                </select>
+                                <button class="btn btn-primary" id="assignCollectorBtn">Assign</button>
+                            </div>
+                            
+                            <div class="active-assignments" id="activeAssignments">
+                                <!-- Filled by JavaScript -->
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Collector Reviews -->
+                    <div class="collector-reviews">
+                        <h4>Recent Collector Reviews</h4>
+                        <div class="reviews-list" id="collectorReviews">
+                            <!-- Filled by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Reports Section -->
+            <section id="reports" class="dashboard-section">
+                <div class="section-header">
+                    <h3>Platform Reports</h3>
+                    <div class="section-actions">
+                        <div class="report-period-selector">
+                            <select id="reportPeriodSelect">
+                                <option value="daily">Daily</option>
+                                <option value="weekly">Weekly</option>
+                                <option value="monthly" selected>Monthly</option>
+                                <option value="quarterly">Quarterly</option>
+                                <option value="yearly">Yearly</option>
+                            </select>
+                        </div>
+                        <button class="btn btn-primary" id="generateCustomReportBtn">
+                            Generate Custom Report
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="reports-container">
+                    <!-- Report Templates -->
+                    <div class="report-templates">
+                        <h4>Quick Report Templates</h4>
+                        <div class="templates-grid">
+                            <div class="template-card" data-template="financial">
+                                <div class="template-icon">💰</div>
+                                <h5>Financial Summary</h5>
+                                <p>Revenue, loans, and financial metrics</p>
+                                <button class="btn-template">Generate</button>
+                            </div>
+                            
+                            <div class="template-card" data-template="user-growth">
+                                <div class="template-icon">📈</div>
+                                <h5>User Growth</h5>
+                                <p>User acquisition and retention metrics</p>
+                                <button class="btn-template">Generate</button>
+                            </div>
+                            
+                            <div class="template-card" data-template="risk-assessment">
+                                <div class="template-icon">⚠️</div>
+                                <h5>Risk Assessment</h5>
+                                <p>Default rates and risk analysis</p>
+                                <button class="btn-template">Generate</button>
+                            </div>
+                            
+                            <div class="template-card" data-template="performance">
+                                <div class="template-icon">🚀</div>
+                                <h5>Platform Performance</h5>
+                                <p>System metrics and performance indicators</p>
+                                <button class="btn-template">Generate</button>
+                            </div>
+                            
+                            <div class="template-card" data-template="compliance">
+                                <div class="template-icon">📋</div>
+                                <h5>Compliance Report</h5>
+                                <p>Regulatory compliance and audit trail</p>
+                                <button class="btn-template">Generate</button>
+                            </div>
+                            
+                            <div class="template-card" data-template="country">
+                                <div class="template-icon">🌍</div>
+                                <h5>Country Analysis</h5>
+                                <p>Country-specific performance metrics</p>
+                                <button class="btn-template">Generate</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Custom Report Builder -->
+                    <div class="custom-report-builder">
+                        <h4>Custom Report Builder</h4>
+                        <div class="builder-container">
+                            <div class="builder-filters">
+                                <h5>Select Metrics</h5>
+                                <div class="metrics-selector">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" name="metric" value="users" checked>
+                                        <span>User Statistics</span>
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" name="metric" value="loans" checked>
+                                        <span>Loan Statistics</span>
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" name="metric" value="revenue">
+                                        <span>Revenue Metrics</span>
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" name="metric" value="risk">
+                                        <span>Risk Metrics</span>
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" name="metric" value="groups">
+                                        <span>Group Metrics</span>
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" name="metric" value="performance">
+                                        <span>Performance Metrics</span>
+                                    </label>
+                                </div>
+                                
+                                <h5>Filter Options</h5>
+                                <div class="filter-options">
+                                    <div class="form-group">
+                                        <label for="reportCountry">Country</label>
+                                        <select id="reportCountry" multiple>
+                                            <option value="all" selected>All Countries</option>
+                                            <!-- Country options -->
+                                        </select>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label for="reportDateRange">Date Range</label>
+                                        <input type="date" id="reportDateFrom">
+                                        <span>to</span>
+                                        <input type="date" id="reportDateTo">
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label for="reportFormat">Format</label>
+                                        <select id="reportFormat">
+                                            <option value="pdf">PDF</option>
+                                            <option value="excel">Excel</option>
+                                            <option value="csv">CSV</option>
+                                            <option value="html">HTML</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="builder-preview">
+                                <h5>Report Preview</h5>
+                                <div class="preview-placeholder">
+                                    <div class="placeholder-icon">📊</div>
+                                    <p>Configure your report metrics and filters, then generate to see preview</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="builder-actions">
+                            <button class="btn btn-outline" id="resetBuilderBtn">Reset</button>
+                            <button class="btn btn-primary" id="generateReportBtn">Generate Report</button>
+                            <button class="btn btn-outline" id="scheduleReportBtn">Schedule Report</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Recent Reports -->
+                    <div class="recent-reports">
+                        <h4>Recently Generated Reports</h4>
+                        <table class="data-table" id="recentReportsTable">
+                            <thead>
+                                <tr>
+                                    <th>Report Name</th>
+                                    <th>Generated</th>
+                                    <th>Period</th>
+                                    <th>Size</th>
+                                    <th>Format</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Filled by JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- System Settings Section -->
+            <section id="system-settings" class="dashboard-section">
+                <div class="section-header">
+                    <h3>System Settings</h3>
+                    <div class="section-actions">
+                        <button class="btn btn-primary" id="saveSystemSettingsBtn">
+                            Save Settings
+                        </button>
+                        <button class="btn btn-outline" id="resetSettingsBtn">
+                            Reset to Defaults
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="system-settings-container">
+                    <!-- Platform Settings -->
+                    <div class="settings-group">
+                        <h4>Platform Configuration</h4>
+                        <div class="settings-grid">
+                            <div class="setting-item">
+                                <label for="platformName">Platform Name</label>
+                                <input type="text" id="platformName" value="M-Pesewa">
+                            </div>
+                            
+                            <div class="setting-item">
+                                <label for="platformCurrency">Default Currency</label>
+                                <select id="platformCurrency">
+                                    <option value="KES">Kenyan Shilling (KES)</option>
+                                    <option value="UGX">Ugandan Shilling (UGX)</option>
+                                    <option value="TZS">Tanzanian Shilling (TZS)</option>
+                                    <option value="GHS">Ghanaian Cedi (GHS)</option>
+                                    <option value="NGN">Nigerian Naira (NGN)</option>
+                                </select>
+                            </div>
+                            
+                            <div class="setting-item">
+                                <label for="interestRate">Default Interest Rate (%)</label>
+                                <input type="number" id="interestRate" value="10" step="0.1">
+                            </div>
+                            
+                            <div class="setting-item">
+                                <label for="penaltyRate">Default Penalty Rate (%)</label>
+                                <input type="number" id="penaltyRate" value="5" step="0.1">
+                            </div>
+                            
+                            <div class="setting-item">
+                                <label for="loanDuration">Default Loan Duration (days)</label>
+                                <input type="number" id="loanDuration" value="7">
+                            </div>
+                            
+                            <div class="setting-item">
+                                <label for="defaultThreshold">Default Threshold (days)</label>
+                                <input type="number" id="defaultThreshold" value="60">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Subscription Settings -->
+                    <div class="settings-group">
+                        <h4>Subscription Settings</h4>
+                        <div class="settings-grid">
+                            <div class="setting-item">
+                                <label for="subscriptionDay">Subscription Collection Day</label>
+                                <input type="number" id="subscriptionDay" value="28" min="1" max="31">
+                            </div>
+                            
+                            <div class="setting-item">
+                                <label for="gracePeriodDays">Grace Period (days)</label>
+                                <input type="number" id="gracePeriodDays" value="3">
+                            </div>
+                            
+                            <div class="setting-item">
+                                <label for="autoSuspend">Auto-suspend After (days)</label>
+                                <input type="number" id="autoSuspend" value="7">
+                            </div>
+                            
+                            <div class="setting-item">
+                                <label for="reminderDays">Reminder Days Before</label>
+                                <input type="text" id="reminderDays" value="7,3,1">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Security Settings -->
+                    <div class="settings-group">
+                        <h4>Security & Access Control</h4>
+                        <div class="settings-grid">
+                            <div class="setting-item">
+                                <label for="sessionTimeout">Session Timeout (minutes)</label>
+                                <input type="number" id="sessionTimeout" value="30">
+                            </div>
+                            
+                            <div class="setting-item">
+                                <label for="maxLoginAttempts">Max Login Attempts</label>
+                                <input type="number" id="maxLoginAttempts" value="5">
+                            </div>
+                            
+                            <div class="setting-item">
+                                <label for="passwordExpiry">Password Expiry (days)</label>
+                                <input type="number" id="passwordExpiry" value="90">
+                            </div>
+                            
+                            <div class="setting-item">
+                                <label for="adminApproval">Require Admin Approval For</label>
+                                <select id="adminApproval" multiple>
+                                    <option value="blacklist">Blacklist Additions</option>
+                                    <option value="override">Ledger Overrides</option>
+                                    <option value="group_suspend">Group Suspensions</option>
+                                    <option value="collector_add">New Debt Collectors</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Notification Settings -->
+                    <div class="settings-group">
+                        <h4>Notification Settings</h4>
+                        <div class="notification-settings">
+                            <div class="setting-item toggle">
+                                <label>Email Notifications</label>
+                                <label class="switch">
+                                    <input type="checkbox" id="emailNotifications" checked>
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                            
+                            <div class="setting-item toggle">
+                                <label>SMS Notifications</label>
+                                <label class="switch">
+                                    <input type="checkbox" id="smsNotifications" checked>
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                            
+                            <div class="setting-item toggle">
+                                <label>Push Notifications</label>
+                                <label class="switch">
+                                    <input type="checkbox" id="pushNotifications" checked>
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                            
+                            <div class="setting-item">
+                                <label for="notificationEmail">Admin Notification Email</label>
+                                <input type="email" id="notificationEmail" value="admin@m-pesewa.com">
+                            </div>
+                            
+                            <div class="setting-item">
+                                <label for="emergencyContact">Emergency Contact</label>
+                                <input type="text" id="emergencyContact" value="+254700000000">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Maintenance Mode -->
+                    <div class="settings-group danger">
+                        <h4>Maintenance & Emergency</h4>
+                        <div class="emergency-settings">
+                            <div class="setting-item toggle">
+                                <label>Maintenance Mode</label>
+                                <label class="switch">
+                                    <input type="checkbox" id="maintenanceMode">
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                            
+                            <div class="setting-item">
+                                <label for="maintenanceMessage">Maintenance Message</label>
+                                <textarea id="maintenanceMessage" rows="3">Platform is under maintenance. We'll be back shortly.</textarea>
+                            </div>
+                            
+                            <div class="setting-item">
+                                <label for="emergencyShutdown">Emergency Shutdown Code</label>
+                                <input type="password" id="emergencyShutdown">
+                            </div>
+                            
+                            <div class="emergency-actions">
+                                <button class="btn btn-outline" id="testEmergencyBtn">Test Emergency</button>
+                                <button class="btn btn-danger" id="emergencyShutdownBtn">Emergency Shutdown</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Audit Logs Section -->
+            <section id="audit-logs" class="dashboard-section">
+                <div class="section-header">
+                    <h3>Audit Logs</h3>
+                    <div class="section-actions">
+                        <button class="btn btn-primary" id="exportLogsBtn">
+                            Export Logs
+                        </button>
+                        <button class="btn btn-outline" id="clearOldLogsBtn">
+                            Clear Old Logs
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="audit-logs-container">
+                    <!-- Log Filters -->
+                    <div class="log-filters">
+                        <div class="filter-group">
+                            <label>Action Type:</label>
+                            <select id="logActionType">
+                                <option value="all">All Actions</option>
+                                <option value="user">User Actions</option>
+                                <option value="system">System Actions</option>
+                                <option value="security">Security Events</option>
+                                <option value="financial">Financial Transactions</option>
+                                <option value="admin">Admin Actions</option>
+                            </select>
+                        </div>
+                        
+                        <div class="filter-group">
+                            <label>User:</label>
+                            <input type="text" id="logUserFilter" placeholder="Username or ID">
+                        </div>
+                        
+                        <div class="filter-group">
+                            <label>Date Range:</label>
+                            <input type="datetime-local" id="logDateFrom">
+                            <span>to</span>
+                            <input type="datetime-local" id="logDateTo">
+                        </div>
+                        
+                        <div class="filter-group">
+                            <label>Severity:</label>
+                            <select id="logSeverity">
+                                <option value="all">All Levels</option>
+                                <option value="info">Info</option>
+                                <option value="warning">Warning</option>
+                                <option value="error">Error</option>
+                                <option value="critical">Critical</option>
+                            </select>
+                        </div>
+                        
+                        <button class="btn-filter" id="applyLogFilters">Apply Filters</button>
+                    </div>
+                    
+                    <!-- Logs Table -->
+                    <div class="logs-table-container">
+                        <table class="data-table full-width" id="auditLogsTable">
+                            <thead>
+                                <tr>
+                                    <th>Timestamp</th>
+                                    <th>User</th>
+                                    <th>Action</th>
+                                    <th>Details</th>
+                                    <th>IP Address</th>
+                                    <th>Severity</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Filled by JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <!-- Log Statistics -->
+                    <div class="log-statistics">
+                        <h4>Log Statistics</h4>
+                        <div class="stats-grid">
+                            <div class="stat-card">
+                                <h5>Total Logs Today</h5>
+                                <div class="stat-value">1,245</div>
+                            </div>
+                            
+                            <div class="stat-card">
+                                <h5>Security Events</h5>
+                                <div class="stat-value">12</div>
+                            </div>
+                            
+                            <div class="stat-card">
+                                <h5>Admin Actions</h5>
+                                <div class="stat-value">85</div>
+                            </div>
+                            
+                            <div class="stat-card">
+                                <h5>Error Rate</h5>
+                                <div class="stat-value">0.8%</div>
+                            </div>
+                        </div>
+                        
+                        <div class="log-charts">
+                            <div class="chart-container">
+                                <h5>Activity by Hour</h5>
+                                <div id="activityByHourChart">
+                                    <!-- Chart will be inserted -->
+                                </div>
+                            </div>
+                            
+                            <div class="chart-container">
+                                <h5>Action Types Distribution</h5>
+                                <div id="actionTypesChart">
+                                    <!-- Chart will be inserted -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Dashboard Footer -->
+    <footer class="dashboard-footer admin-footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <p>© 2024 M-Pesewa.com - Admin Dashboard v2.1.4</p>
+                    <p>Last System Check: <span id="lastSystemCheck">Just now</span></p>
+                </div>
+                
+                <div class="footer-links">
+                    <a href="#" id="systemHealthBtn">System Health</a>
+                    <a href="#" id="backupBtn">Create Backup</a>
+                    <a href="#" id="supportBtn">Support</a>
+                    <a href="#" id="documentationBtn">Documentation</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Admin Modals -->
+    <div class="modal" id="userDetailModal">
+        <div class="modal-content large">
+            <div class="modal-header">
+                <h3>User Details</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <!-- User details will be inserted -->
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="blacklistModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Add to Blacklist</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <!-- Blacklist form -->
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="overrideModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Override Details</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <!-- Override details -->
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="systemBackupModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>System Backup</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <!-- Backup options -->
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="emergencyModal">
+        <div class="modal-content emergency">
+            <div class="modal-header">
+                <h3>⚠️ Emergency Action Required</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <!-- Emergency actions -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../../assets/js/utils.js"></script>
+    <script src="../../assets/js/admin.js"></script>
+    <script src="../../assets/js/dashboard-admin.js"></script>
+</body>
+</html>
