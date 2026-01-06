@@ -1,0 +1,242 @@
+{
+  "kenya": {
+    "name": "Kenya",
+    "slug": "kenya",
+    "flagEmoji": "🇰🇪",
+    "currency": {
+      "name": "Kenyan Shilling",
+      "code": "KES",
+      "symbol": "KSh",
+      "usdRate": 0.0078
+    },
+    "phoneCode": "+254",
+    "languages": ["English", "Swahili"],
+    "crossBorderLending": false,
+    "contactEmail": "kenya@m-pesewa.com",
+    "defaultLanguage": "en",
+    "supportedLanguages": ["en", "sw"],
+    "maxGroupsPerUser": 4,
+    "minGroupMembers": 5,
+    "maxGroupMembers": 1000
+  },
+  "uganda": {
+    "name": "Uganda",
+    "slug": "uganda",
+    "flagEmoji": "🇺🇬",
+    "currency": {
+      "name": "Ugandan Shilling",
+      "code": "UGX",
+      "symbol": "UGX",
+      "usdRate": 0.00027
+    },
+    "phoneCode": "+256",
+    "languages": ["English", "Swahili", "Luganda"],
+    "crossBorderLending": false,
+    "contactEmail": "uganda@m-pesewa.com",
+    "defaultLanguage": "en",
+    "supportedLanguages": ["en", "sw"],
+    "maxGroupsPerUser": 4,
+    "minGroupMembers": 5,
+    "maxGroupMembers": 1000
+  },
+  "tanzania": {
+    "name": "Tanzania",
+    "slug": "tanzania",
+    "flagEmoji": "🇹🇿",
+    "currency": {
+      "name": "Tanzanian Shilling",
+      "code": "TZS",
+      "symbol": "TSh",
+      "usdRate": 0.00043
+    },
+    "phoneCode": "+255",
+    "languages": ["Swahili", "English"],
+    "crossBorderLending": false,
+    "contactEmail": "tanzania@m-pesewa.com",
+    "defaultLanguage": "sw",
+    "supportedLanguages": ["sw", "en"],
+    "maxGroupsPerUser": 4,
+    "minGroupMembers": 5,
+    "maxGroupMembers": 1000
+  },
+  "rwanda": {
+    "name": "Rwanda",
+    "slug": "rwanda",
+    "flagEmoji": "🇷🇼",
+    "currency": {
+      "name": "Rwandan Franc",
+      "code": "RWF",
+      "symbol": "RF",
+      "usdRate": 0.00081
+    },
+    "phoneCode": "+250",
+    "languages": ["Kinyarwanda", "French", "English", "Swahili"],
+    "crossBorderLending": false,
+    "contactEmail": "rwanda@m-pesewa.com",
+    "defaultLanguage": "en",
+    "supportedLanguages": ["en", "fr"],
+    "maxGroupsPerUser": 4,
+    "minGroupMembers": 5,
+    "maxGroupMembers": 1000
+  },
+  "burundi": {
+    "name": "Burundi",
+    "slug": "burundi",
+    "flagEmoji": "🇧🇮",
+    "currency": {
+      "name": "Burundian Franc",
+      "code": "BIF",
+      "symbol": "FBu",
+      "usdRate": 0.00035
+    },
+    "phoneCode": "+257",
+    "languages": ["Kirundi", "French", "Swahili"],
+    "crossBorderLending": false,
+    "contactEmail": "burundi@m-pesewa.com",
+    "defaultLanguage": "fr",
+    "supportedLanguages": ["fr", "en"],
+    "maxGroupsPerUser": 4,
+    "minGroupMembers": 5,
+    "maxGroupMembers": 1000
+  },
+  "somalia": {
+    "name": "Somalia",
+    "slug": "somalia",
+    "flagEmoji": "🇸🇴",
+    "currency": {
+      "name": "Somali Shilling",
+      "code": "SOS",
+      "symbol": "Sh.So.",
+      "usdRate": 0.0017
+    },
+    "phoneCode": "+252",
+    "languages": ["Somali", "Arabic", "English"],
+    "crossBorderLending": false,
+    "contactEmail": "somalia@m-pesewa.com",
+    "defaultLanguage": "so",
+    "supportedLanguages": ["so", "ar", "en"],
+    "maxGroupsPerUser": 4,
+    "minGroupMembers": 5,
+    "maxGroupMembers": 1000
+  },
+  "south-sudan": {
+    "name": "South Sudan",
+    "slug": "south-sudan",
+    "flagEmoji": "🇸🇸",
+    "currency": {
+      "name": "South Sudanese Pound",
+      "code": "SSP",
+      "symbol": "£",
+      "usdRate": 0.0052
+    },
+    "phoneCode": "+211",
+    "languages": ["English", "Arabic", "Dinka"],
+    "crossBorderLending": false,
+    "contactEmail": "southsudan@m-pesewa.com",
+    "defaultLanguage": "en",
+    "supportedLanguages": ["en", "ar"],
+    "maxGroupsPerUser": 4,
+    "minGroupMembers": 5,
+    "maxGroupMembers": 1000
+  },
+  "ethiopia": {
+    "name": "Ethiopia",
+    "slug": "ethiopia",
+    "flagEmoji": "🇪🇹",
+    "currency": {
+      "name": "Ethiopian Birr",
+      "code": "ETB",
+      "symbol": "Br",
+      "usdRate": 0.018
+    },
+    "phoneCode": "+251",
+    "languages": ["Amharic", "English", "Oromo", "Somali", "Tigrinya"],
+    "crossBorderLending": false,
+    "contactEmail": "ethiopia@m-pesewa.com",
+    "defaultLanguage": "am",
+    "supportedLanguages": ["am", "en"],
+    "maxGroupsPerUser": 4,
+    "minGroupMembers": 5,
+    "maxGroupMembers": 1000
+  },
+  "drc": {
+    "name": "Democratic Republic of the Congo",
+    "slug": "drc",
+    "flagEmoji": "🇨🇩",
+    "currency": {
+      "name": "Congolese Franc",
+      "code": "CDF",
+      "symbol": "FC",
+      "usdRate": 0.00037
+    },
+    "phoneCode": "+243",
+    "languages": ["French", "Lingala", "Swahili", "Kikongo", "Tshiluba"],
+    "crossBorderLending": false,
+    "contactEmail": "drc@m-pesewa.com",
+    "defaultLanguage": "fr",
+    "supportedLanguages": ["fr", "sw"],
+    "maxGroupsPerUser": 4,
+    "minGroupMembers": 5,
+    "maxGroupMembers": 1000
+  },
+  "nigeria": {
+    "name": "Nigeria",
+    "slug": "nigeria",
+    "flagEmoji": "🇳🇬",
+    "currency": {
+      "name": "Nigerian Naira",
+      "code": "NGN",
+      "symbol": "₦",
+      "usdRate": 0.00066
+    },
+    "phoneCode": "+234",
+    "languages": ["English", "Hausa", "Yoruba", "Igbo"],
+    "crossBorderLending": false,
+    "contactEmail": "nigeria@m-pesewa.com",
+    "defaultLanguage": "en",
+    "supportedLanguages": ["en"],
+    "maxGroupsPerUser": 4,
+    "minGroupMembers": 5,
+    "maxGroupMembers": 1000
+  },
+  "south-africa": {
+    "name": "South Africa",
+    "slug": "south-africa",
+    "flagEmoji": "🇿🇦",
+    "currency": {
+      "name": "South African Rand",
+      "code": "ZAR",
+      "symbol": "R",
+      "usdRate": 0.054
+    },
+    "phoneCode": "+27",
+    "languages": ["English", "Afrikaans", "Zulu", "Xhosa", "Sesotho"],
+    "crossBorderLending": false,
+    "contactEmail": "southafrica@m-pesewa.com",
+    "defaultLanguage": "en",
+    "supportedLanguages": ["en"],
+    "maxGroupsPerUser": 4,
+    "minGroupMembers": 5,
+    "maxGroupMembers": 1000
+  },
+  "ghana": {
+    "name": "Ghana",
+    "slug": "ghana",
+    "flagEmoji": "🇬🇭",
+    "currency": {
+      "name": "Ghanaian Cedi",
+      "code": "GHS",
+      "symbol": "₵",
+      "usdRate": 0.067
+    },
+    "phoneCode": "+233",
+    "languages": ["English", "Akan", "Ewe", "Ga", "Dagbani"],
+    "crossBorderLending": false,
+    "contactEmail": "ghana@m-pesewa.com",
+    "defaultLanguage": "en",
+    "supportedLanguages": ["en"],
+    "maxGroupsPerUser": 4,
+    "minGroupMembers": 5,
+    "maxGroupMembers": 1000
+  }
+}
