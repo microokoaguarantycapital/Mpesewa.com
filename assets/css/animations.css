@@ -1,0 +1,498 @@
+/* ==========================================================================
+   ANIMATIONS - M-Pesewa Subtle Motion System
+   Purpose: Subtle, non-distracting animations only
+   Must support: Floating emergency category cards, page transitions,
+                hover states, micro-feedback (focus, active, success)
+   Strict requirements: Minimal motion, no gimmicks, no infinite animations
+                        except floating cards, respect reduced-motion preferences
+   Performance-safe: No layout thrashing, hardware accelerated where possible
+   Prohibited: Do NOT animate tables, numbers, ledgers, admin views
+   ========================================================================== */
+
+/* Reduced Motion Preferences
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* Floating Emergency Category Cards
+   ========================================================================== */
+.floating-card {
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: float-subtle 6s ease-in-out infinite;
+}
+
+.floating-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 12px 24px rgba(81, 45, 168, 0.15);
+    animation-play-state: paused;
+}
+
+@keyframes float-subtle {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+    33% {
+        transform: translateY(-4px) rotate(1.5deg);
+    }
+    66% {
+        transform: translateY(2px) rotate(-1deg);
+    }
+}
+
+/* Staggered delay for grid layout */
+.floating-card:nth-child(3n+1) {
+    animation-delay: 0s;
+}
+.floating-card:nth-child(3n+2) {
+    animation-delay: 0.2s;
+}
+.floating-card:nth-child(3n+3) {
+    animation-delay: 0.4s;
+}
+
+/* Page Transitions
+   ========================================================================== */
+.page-enter {
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.page-enter-active {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.page-exit {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.page-exit-active {
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Fade In (General purpose)
+   ========================================================================== */
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.fade-in {
+    animation: fade-in 0.5s ease forwards;
+}
+
+.fade-in-delay-1 { animation-delay: 0.1s; }
+.fade-in-delay-2 { animation-delay: 0.2s; }
+.fade-in-delay-3 { animation-delay: 0.3s; }
+
+/* Slide In (From edges)
+   ========================================================================== */
+@keyframes slide-in-left {
+    from {
+        opacity: 0;
+        transform: translateX(-40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slide-in-right {
+    from {
+        opacity: 0;
+        transform: translateX(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slide-in-up {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slide-in-down {
+    from {
+        opacity: 0;
+        transform: translateY(-40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.slide-in-left { animation: slide-in-left 0.6s ease; }
+.slide-in-right { animation: slide-in-right 0.6s ease; }
+.slide-in-up { animation: slide-in-up 0.6s ease; }
+.slide-in-down { animation: slide-in-down 0.6s ease; }
+
+/* Micro-Interactions: Hover States
+   ========================================================================== */
+.hover-lift {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.hover-lift:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.hover-grow {
+    transition: transform 0.2s ease;
+}
+
+.hover-grow:hover {
+    transform: scale(1.05);
+}
+
+.hover-color-shift {
+    transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+/* Button Press Effect
+   ========================================================================== */
+.btn-press:active {
+    transform: scale(0.97);
+    transition: transform 0.1s ease;
+}
+
+/* Focus Rings (Accessibility)
+   ========================================================================== */
+.focus-ring:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(81, 45, 168, 0.3);
+}
+
+/* Success/Error Feedback
+   ========================================================================== */
+@keyframes success-pulse {
+    0%, 100% {
+        box-shadow: 0 0 0 0 rgba(56, 142, 60, 0.4);
+    }
+    50% {
+        box-shadow: 0 0 0 8px rgba(56, 142, 60, 0);
+    }
+}
+
+@keyframes error-shake {
+    0%, 100% { transform: translateX(0); }
+    10%, 30%, 50%, 70%, 90% { transform: translateX(-4px); }
+    20%, 40%, 60%, 80% { transform: translateX(4px); }
+}
+
+.success-feedback {
+    animation: success-pulse 0.8s ease;
+}
+
+.error-feedback {
+    animation: error-shake 0.5s ease;
+}
+
+/* Loading Spinners & Progress
+   ========================================================================== */
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.spinner {
+    animation: spin 0.8s linear infinite;
+}
+
+.progress-bar {
+    position: relative;
+    overflow: hidden;
+}
+
+.progress-bar::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    background: linear-gradient(90deg, transparent, rgba(81, 45, 168, 0.2), transparent);
+    animation: progress-shimmer 1.5s ease-in-out infinite;
+}
+
+@keyframes progress-shimmer {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+/* Notification Entrance
+   ========================================================================== */
+@keyframes notification-slide {
+    from {
+        opacity: 0;
+        transform: translateY(-20px) scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.notification-enter {
+    animation: notification-slide 0.3s ease forwards;
+}
+
+/* Modal Backdrop & Content
+   ========================================================================== */
+@keyframes backdrop-fade {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes modal-scale {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.modal-backdrop {
+    animation: backdrop-fade 0.2s ease;
+}
+
+.modal-content {
+    animation: modal-scale 0.3s ease;
+}
+
+/* Count-up Animation (For statistics only)
+   ========================================================================== */
+@keyframes count-up {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.count-up {
+    animation: count-up 0.6s ease forwards;
+}
+
+/* Pulsing Attention (For new/important items)
+   ========================================================================== */
+@keyframes attention-pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.7;
+    }
+}
+
+.attention-pulse {
+    animation: attention-pulse 2s ease-in-out infinite;
+}
+
+/* Ripple Effect (For buttons)
+   ========================================================================== */
+.ripple {
+    position: relative;
+    overflow: hidden;
+}
+
+.ripple::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 5px;
+    height: 5px;
+    background: rgba(255, 255, 255, 0.6);
+    opacity: 0;
+    border-radius: 100%;
+    transform: scale(1, 1) translate(-50%);
+    transform-origin: 50% 50%;
+}
+
+.ripple:focus:not(:active)::after {
+    animation: ripple 0.6s ease-out;
+}
+
+@keyframes ripple {
+    0% {
+        transform: scale(0, 0);
+        opacity: 0.5;
+    }
+    20% {
+        transform: scale(25, 25);
+        opacity: 0.3;
+    }
+    100% {
+        opacity: 0;
+        transform: scale(40, 40);
+    }
+}
+
+/* Staggered Children Animation
+   ========================================================================== */
+.stagger-children > * {
+    opacity: 0;
+    animation: fade-in 0.5s ease forwards;
+}
+
+.stagger-children > *:nth-child(1) { animation-delay: 0.05s; }
+.stagger-children > *:nth-child(2) { animation-delay: 0.1s; }
+.stagger-children > *:nth-child(3) { animation-delay: 0.15s; }
+.stagger-children > *:nth-child(4) { animation-delay: 0.2s; }
+.stagger-children > *:nth-child(5) { animation-delay: 0.25s; }
+.stagger-children > *:nth-child(6) { animation-delay: 0.3s; }
+.stagger-children > *:nth-child(7) { animation-delay: 0.35s; }
+.stagger-children > *:nth-child(8) { animation-delay: 0.4s; }
+
+/* Hero Background Elements
+   ========================================================================== */
+.floating-circle {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.1;
+    animation: circle-float 20s ease-in-out infinite;
+}
+
+.circle-1 {
+    animation-delay: 0s;
+    animation-duration: 25s;
+}
+
+.circle-2 {
+    animation-delay: 5s;
+    animation-duration: 30s;
+}
+
+.circle-3 {
+    animation-delay: 10s;
+    animation-duration: 35s;
+}
+
+@keyframes circle-float {
+    0%, 100% {
+        transform: translate(0, 0) scale(1);
+    }
+    33% {
+        transform: translate(40px, -30px) scale(1.1);
+    }
+    66% {
+        transform: translate(-20px, 40px) scale(0.9);
+    }
+}
+
+/* Category Icon Hover
+   ========================================================================== */
+.category-icon-hover {
+    transition: transform 0.3s ease;
+}
+
+.category-icon-hover:hover {
+    transform: rotate(15deg) scale(1.2);
+}
+
+/* Smooth Scroll
+   ========================================================================== */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Animation Performance Layer
+   ========================================================================== */
+.performant-layer {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+}
+
+/* Exit Animations
+   ========================================================================== */
+@keyframes fade-out-up {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+}
+
+@keyframes fade-out-down {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+}
+
+.fade-out-up { animation: fade-out-up 0.3s ease forwards; }
+.fade-out-down { animation: fade-out-down 0.3s ease forwards; }
+
+/* Animation Utilities
+   ========================================================================== */
+.animation-paused {
+    animation-play-state: paused !important;
+}
+
+.animation-running {
+    animation-play-state: running !important;
+}
+
+.delay-100 { animation-delay: 100ms; }
+.delay-200 { animation-delay: 200ms; }
+.delay-300 { animation-delay: 300ms; }
+.delay-400 { animation-delay: 400ms; }
+.delay-500 { animation-delay: 500ms; }
+
+.duration-100 { animation-duration: 100ms; }
+.duration-200 { animation-duration: 200ms; }
+.duration-300 { animation-duration: 300ms; }
+.duration-400 { animation-duration: 400ms; }
+.duration-500 { animation-duration: 500ms; }
+.duration-1000 { animation-duration: 1000ms; }
+.duration-2000 { animation-duration: 2000ms; }
